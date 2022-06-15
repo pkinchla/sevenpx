@@ -6,13 +6,15 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "lint": "next lint"
+    "lint": "next lint",
+    "draw": "node handle_svg_files.js"
   },
   "dependencies": {
     "fastify": "^4.0.2",
     "next": "12.1.6",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "svgson": "^5.2.1"
   },
   "devDependencies": {
     "eslint": "8.17.0",
