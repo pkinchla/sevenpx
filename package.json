@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "fastify": "^4.0.2",
-    "next": "12.1.6",
+    "next": "12.1.7-canary",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "svgson": "^5.2.1"
