@@ -6,7 +6,7 @@ module.exports = {
     'comma-dangle': ['error', 'always-multiline'],
     semi: ['error', 'always'],
     'react/react-in-jsx-scope': 'off',
-    indent: ['error', 2],
+    indent: [2, 2, { SwitchCase: 1 }],
     'react/jsx-no-duplicate-props': [0, { ignoreCase: false }],
   },
 };

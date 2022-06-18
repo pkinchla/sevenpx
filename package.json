@@ -7,17 +7,26 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "lint": "next lint",
-    "draw": "node handle_svg_files.js"
+    "draw": "node handle_svg_files.js",
+    "test": "jest",
+    "test:watch": "jest --coverage --verbose --watchAll"
   },
   "dependencies": {
+    "contentful": "^9.1.32",
     "fastify": "^4.0.2",
-    "next": "12.1.7-canary",
+    "marked": "^4.0.17",
+    "next": "12.1.7-canary.41",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "svgson": "^5.2.1"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "dotenv": "^16.0.1",
     "eslint": "8.17.0",
-    "eslint-config-next": "12.1.6"
+    "eslint-config-next": "12.1.6",
+    "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0"
   }
 }
