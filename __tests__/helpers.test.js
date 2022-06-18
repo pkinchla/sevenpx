@@ -1,12 +1,12 @@
 import * as utils from '../utils/helpers';
 
 describe('getContent()', () => {
-  it('it fetches content correctly', async () => {
+  it('it fetches content successfully', async () => {
     const content = await utils.getContent();
     expect(typeof content.copy).toBe('string');
   });
 
-  it('handles 404s', async () => {
+  it('handles 404 error', async () => {
     process.env.CONTENT_ENTRY = 'bad_id';
     const content = await utils.getContent();
     expect(content.status).toBe(404);

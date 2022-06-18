@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "lint": "next lint",
-    "draw": "node handle_svg_files.js",
+    "draw": "node handle-svg-files.js",
     "test": "jest",
     "test:watch": "jest --coverage --verbose --watchAll"
   },
