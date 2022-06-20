@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { getContent } from '../utils/helpers';
 
-import Logo from '../components/logo';
+import Logo from '../components/Logo';
 
 export default function Index(props) {
   const { content } = props;
