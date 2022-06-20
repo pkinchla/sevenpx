@@ -21,9 +21,8 @@ fs.readdirSync('./svg').forEach((fileName) => {
 
   parse(contents, {
     svgo: false,
-    title: fileName.split('.')[0],
   }).then((result) => {
-    paths.push(result);
+    paths.push({ ...result, title: fileName.split('.')[0] });
     if (index === fileLength) {
       const content = JSON.stringify(paths);
       setTimeout(() => {
