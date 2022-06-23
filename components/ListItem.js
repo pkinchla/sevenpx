@@ -26,6 +26,8 @@ function ListItem({
     ['disable-editing']: active !== index,
   });
 
+  const displayName = drawing?.children[0]?.children[0]?.value || drawing.title;
+
   return (
     <FocusTrap active={active === index}>
       <li className={liClasses}>
@@ -36,12 +38,12 @@ function ListItem({
           updateDrawings={updateDrawings}
           name={drawing.title}
         />
-        <span className="name">{drawing.title}</span>
+        <span className="name">{displayName}</span>
         {domReady && (
           <button className={buttonClasses} onClick={() => handleClick(index)}>
             <span>
               {active === index ? 'Finish Editing' : 'Edit'}
-              <span className="assistive-text">{`${drawing.title} portrait`}</span>
+              <span className="assistive-text">{`${displayName} portrait`}</span>
             </span>
           </button>
         )}
