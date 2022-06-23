@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { parse, stringify } = require('svgson');
+const { parse } = require('svgson');
 
 const paths = [];
 const fileLength = fs.readdirSync('./svg').length;
