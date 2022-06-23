@@ -16,10 +16,11 @@ function App({ Component, pageProps }) {
 
   function updateDrawings(title, path, index, transform) {
     // copy current state
-    const portraits = [...this.state.portraits];
+    const portraits = [...drawings];
+
     // filter out target svg based on title
     const target = portraits.filter((item) => {
-      return item.children[0].children[0].value === title;
+      return item.title === title;
     });
 
     // update appropriate path
@@ -29,14 +30,8 @@ function App({ Component, pageProps }) {
         item.attributes.transform = transform;
       }
     });
-    // // update copy with new portrait
-    portraits.map((item) => {
-      if (item.children[0].children[0].value === title) {
-        item = target[0];
-      }
-    });
 
-    setDrawings({ portraits });
+    setDrawings(portraits);
   }
 
   const props = { ...pageProps, updateDrawings, domReady, drawings };
