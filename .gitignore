@@ -27,3 +27,7 @@ yarn-error.log*
 # drawing files
 /svg
 svgs.json
+
+#local scripts
+*.sh
+ecosystem.config.js
