@@ -14,7 +14,7 @@ CONTENT_ENTRY=contentful-content-entry
 2. Then create a folder of SVGS in `./svg/` (still the root of the project).
 3. run the `yarn draw` to generate some json for the application. 
 
-*Tip: It is good to include a title for use on naming each drawing. Though, it will fallback to the filename if not title is provided.*
+*Tip: It is good to include a title for use on naming each drawing. Though, it will fallback to the filename if no title is provided.*
 
 You can now run the app in development using `yarn dev`. For building the app for production use `yarn build`.
 
