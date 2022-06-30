@@ -1,7 +1,7 @@
 import * as utils from '../utils/helpers';
 
 describe('getContent()', () => {
-  it('it fetches content successfully', async () => {
+  it('fetches content successfully', async () => {
     const content = await utils.getContent();
     expect(typeof content.copy).toBe('string');
   });
