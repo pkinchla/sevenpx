@@ -51,7 +51,7 @@ export default function Drawings(props) {
   );
 }
 
-export async function getStaticProps() {
+export function getStaticProps() {
   return {
     props: {
       title: 'Seven Pixels | Drawings',
