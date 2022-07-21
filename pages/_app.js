@@ -1,10 +1,13 @@
 import { Fragment, useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import PropTypes from 'prop-types';
 import Head from '../components/Head';
 import '../styles/globals.css';
 
 import svgs from '../svgs';
-import Vector from '../components/VectorCollage';
+const Vector = dynamic(() => import('../components/VectorCollage'), {
+  ssr: false,
+});
 
 function App({ Component, pageProps }) {
   const [domReady, setReady] = useState(false);
