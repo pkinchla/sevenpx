@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import Drawings, { getStaticProps } from '../pages/drawings';
 import drawings from '../svgs.json';

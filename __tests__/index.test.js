@@ -1,5 +1,4 @@
 import next from 'next';
-import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import Index, { getServerSideProps } from '../pages/index';
 

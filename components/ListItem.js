@@ -10,6 +10,10 @@ function ListItem({
   setActive,
   active,
 }) {
+  if (!drawing) {
+    return null;
+  }
+
   function handleClick(index) {
     if (index === active) {
       return setActive(null);
@@ -37,6 +41,7 @@ function ListItem({
           paths={drawing.children}
           updateDrawings={updateDrawings}
           name={drawing.title}
+          active={active === index}
         />
         <span className="name">{displayName}</span>
         {domReady && (
