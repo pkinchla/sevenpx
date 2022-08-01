@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 export default function Portrait({
+  active,
   name,
   viewBox,
   title,
@@ -106,14 +107,14 @@ export default function Portrait({
         if (item.name !== 'path') {
           return null;
         }
-
         return (
           <path
             className="draggable"
-            tabIndex={0}
+            tabIndex={active ? 0 : -1}
             key={index}
             d={item.attributes.d}
             transform={item.attributes.transform}
+            aria-label={`Move this path for the ${title} portrait`}
           />
         );
       })}
@@ -122,13 +123,18 @@ export default function Portrait({
 }
 
 Portrait.propTypes = {
+  active: PropTypes.bool,
+  name: PropTypes.string,
+  viewBox: PropTypes.string,
   title: PropTypes.string,
   paths: PropTypes.array,
-  viewBox: PropTypes.string,
+  updateDrawings: PropTypes.func,
 };
 
 Portrait.defaultProps = {
+  active: false,
+  name: '',
+  viewBox: '',
   title: '',
   paths: [],
-  viewBox: '',
 };
