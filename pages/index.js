@@ -22,8 +22,8 @@ export default function Index(props) {
             ) : (
               <div dangerouslySetInnerHTML={{ __html: content.copy }} />
             )}
-            <Link href="/drawings" as="/drawings">
-              <a className="single-link">View Drawings &rarr;</a>
+            <Link href="/drawings" as="/drawings" className="single-link">
+              View Drawings &rarr;
             </Link>
           </div>
         </div>

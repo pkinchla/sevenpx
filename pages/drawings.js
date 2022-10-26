@@ -14,9 +14,7 @@ export default function Drawings(props) {
       <div className="drawing-page base-layout">
         <span className="title">
           <Link href="/" as="/">
-            <a>
-              <Logo />
-            </a>
+            <Logo />
           </Link>
         </span>
         <section>
@@ -24,8 +22,8 @@ export default function Drawings(props) {
             <h1 className="page-title" tabIndex="-1">
               Drawings
             </h1>
-            <Link href="/" as="/">
-              <a className="single-link">Home</a>
+            <Link href="/" as="/" className="single-link">
+              Home
             </Link>
           </header>
           <div className="content">
