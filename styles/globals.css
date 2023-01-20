@@ -475,7 +475,7 @@ input:focus {
 
   .title {
     font-size: 5rem;
-    margin-top: 3em;
+    margin-top: 10rem;
   }
 
   .intro,
@@ -521,7 +521,7 @@ input:focus {
     content: 'large 1020-1500';
   }
   .title {
-    margin-top: 4.5em;
+    margin-top: 15rem;
   }
 
   .intro .copy {
