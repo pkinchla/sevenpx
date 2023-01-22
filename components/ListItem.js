@@ -1,6 +1,7 @@
 import FocusTrap from 'focus-trap-react';
-import Portrait from './Portrait';
 import classNames from 'classnames';
+import Portrait from './Portrait';
+import useControlScroll from './hooks/useControlScroll';
 
 function ListItem({
   drawing,
@@ -10,14 +11,18 @@ function ListItem({
   setActive,
   active,
 }) {
+  const [blockScroll, allowScroll] = useControlScroll();
+
   if (!drawing) {
     return null;
   }
 
   function handleClick(index) {
     if (index === active) {
+      allowScroll();
       return setActive(null);
     }
+    blockScroll();
     return setActive(index);
   }
 
