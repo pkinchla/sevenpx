@@ -19,3 +19,6 @@ CONTENT_ENTRY=contentful-content-entry
 You can now run the app in development using `yarn dev`. For building the app for production use `yarn build`.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## My instance
+[sevenpx](https://sevenpx.design/)
