@@ -1,15 +1,15 @@
-import PropTypes from 'prop-types';
+import drawings from "../components/DrawingsSignal.tsx";
 
-function generatePaths(svgs) {
-  const fills = ['path-green', 'path-purple', 'path-black'];
-  let collage = [];
+function generatePaths(svgs: any) {
+  const fills = ["path-green", "path-purple", "path-black"];
+  const collage = [];
 
   for (let i = 0; i < svgs.length; i++) {
     const svg = svgs[i];
     for (let j = 0; j < svg.children.length; j++) {
       const child = svg.children[j];
 
-      if (child.name === 'path') {
+      if (child.name === "path") {
         collage.push({
           path: child.attributes.d,
           transform: child.attributes.transform ?? null,
@@ -22,12 +22,8 @@ function generatePaths(svgs) {
   return collage;
 }
 
-const Vector = ({ svgs }) => {
-  if (!svgs) {
-    return null;
-  }
-
-  const vectors = generatePaths(svgs);
+const Vector = () => {
+  const vectors = generatePaths(drawings.value);
 
   return (
     <div className="background">
@@ -49,14 +45,6 @@ const Vector = ({ svgs }) => {
       </svg>
     </div>
   );
-};
-
-Vector.propTypes = {
-  svgs: PropTypes.array,
-};
-
-Vector.defaultProps = {
-  svgs: [],
 };
 
 export default Vector;

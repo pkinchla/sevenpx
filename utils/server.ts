@@ -1,28 +1,32 @@
-import { createClient } from 'contentful';
-import { marked } from 'marked';
+import { config } from "https://deno.land/x/dotenv@v3.2.2/mod.ts";
+import { createClient } from "contentful";
+import { marked } from "marked";
 
 // run server side
 export async function getContent() {
+  const ENV = await config();
   const client = createClient({
-    space: process.env.SPACE_ID,
-    accessToken: process.env.ACCESS_TOKEN,
+    space: ENV.SPACE_ID,
+    accessToken: ENV.ACCESS_TOKEN,
   });
 
   return await client
-    .getEntry(process.env.CONTENT_ENTRY)
-    .then((content) => {
+    .getEntry(ENV.CONTENT_ENTRY)
+    .then((content: any) => {
       return {
         hasError: false,
+        status: 200,
         copy: marked.parse(content.fields.copy),
+        error: null,
       };
     })
-    .catch((error) => {
+    .catch((error: Error) => {
       switch (error.name) {
-        case 'AccessTokenInvalid':
-        case 'AccessDenied':
-        case 'BadRequest':
-        case 'NotFound':
-        case 'VersionMismatch':
+        case "AccessTokenInvalid":
+        case "AccessDenied":
+        case "BadRequest":
+        case "NotFound":
+        case "VersionMismatch": {
           const errorObject = JSON.parse(error.message);
           return {
             hasError: true,
@@ -30,13 +34,15 @@ export async function getContent() {
             error: errorObject.message,
             copy: null,
           };
-        default:
+        }
+        default: {
           return {
             hasError: true,
             status: 404,
             error: error.message,
             copy: null,
           };
+        }
       }
     });
 }
