@@ -96,7 +96,12 @@ export default function Portrait({ active, name, viewBox, title, paths }) {
   });
 
   return (
-    <svg ref={drawing} xmlns="http://www.w3.org/2000/svg" viewBox={viewBox}>
+    <svg
+      role="application"
+      ref={drawing}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox={viewBox}
+    >
       <title>{title}</title>
       {paths.map((item: any, index: number) => {
         if (item.name !== "path") {
@@ -109,7 +114,6 @@ export default function Portrait({ active, name, viewBox, title, paths }) {
             key={index}
             d={item.attributes.d}
             transform={item.attributes.transform}
-            aria-label={`Move this path for the ${title} portrait`}
           />
         );
       })}
