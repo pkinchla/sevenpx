@@ -3,6 +3,7 @@ import classNames from "classnames";
 import Portrait from "./Portrait.tsx";
 // import useControlScroll from './hooks/useControlScroll';
 import active from "../components/ActiveIndex.tsx";
+import { IS_BROWSER } from "$fresh/runtime.ts";
 
 function ListItem({
   drawing,
@@ -10,7 +11,7 @@ function ListItem({
 }: {
   drawing: any;
   index: number;
-  updateDrawings: Function;
+  updateDrawings: void;
 }) {
   if (!drawing) {
     return null;
@@ -38,15 +39,17 @@ function ListItem({
         active={active.value === index}
       />
       <span className="name">{displayName}</span>
-      <button
-        className={buttonClasses}
-        onClick={() => handleclick(active.value, index)}
-      >
-        <span>
-          {active.value === index ? "Finish Editing" : "Edit"}
-          <span className="assistive-text">{`${displayName} portrait`}</span>
-        </span>
-      </button>
+      {IS_BROWSER && (
+        <button
+          className={buttonClasses}
+          onClick={() => handleclick(active.value, index)}
+        >
+          <span>
+            {active.value === index ? "Finish Editing" : "Edit"}
+            <span className="assistive-text">{`${displayName} portrait`}</span>
+          </span>
+        </button>
+      )}
     </li>
     // </FocusTrap>
   );

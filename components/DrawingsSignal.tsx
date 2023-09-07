@@ -1,9 +1,14 @@
-import { signal } from '@preact/signals';
-import svgs from '../svgs.json' assert { type: 'json' };
+import { signal } from "@preact/signals";
+import svgs from "../svgs.json" assert { type: "json" };
 
 const drawings = signal(svgs);
 
-export function updateDrawings(title, path, index, transform) {
+export function updateDrawings(
+  title: string,
+  path: string,
+  index: number,
+  transform: number
+) {
   const copy = [...drawings.value];
 
   // filter out target svg based on title
