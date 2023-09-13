@@ -19,6 +19,10 @@ export default function Home({ data }: PageProps) {
     <>
       <Head>
         <title>Seven Pixels | Home</title>
+        <meta
+          name="description"
+          content="A small application about drawing, collage and editing scalable vector grahic portaits in the browser. Side project of Paul Kinchla."
+        />
       </Head>
       <div className="intro-container">
         <div className="intro base-layout">
