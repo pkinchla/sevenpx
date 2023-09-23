@@ -13,7 +13,7 @@ CONTENT_ENTRY=contentful-content-entry
 ```
 
 2. Then create a folder of SVGS in `./svg/` (still the root of the project).
-3. run the `deno taks process:drawings` to generate some json for the application.
+3. run the `deno task process:drawings` to generate some json for the application.
 
 _Tip: It is good to include a title for use on naming each drawing. Though, it will fallback to the filename if no title is provided._
 
