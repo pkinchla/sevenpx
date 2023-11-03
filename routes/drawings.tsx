@@ -19,7 +19,7 @@ export default function Drawings() {
             <Logo />
           </a>
         </span>
-        <section>
+        <main>
           <header className="header">
             <h1 className="page-title">Drawings</h1>
             <a href="/" as="/" className="single-link">
@@ -33,7 +33,7 @@ export default function Drawings() {
               })}
             </ul>
           </div>
-        </section>
+        </main>
       </div>
     </>
   );
