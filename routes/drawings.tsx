@@ -19,7 +19,7 @@ export default function Drawings() {
             <Logo />
           </a>
         </span>
-        <section>
+        <main>
           <header className="header">
             <h1 className="page-title">Drawings</h1>
             <a href="/" as="/" className="single-link">
@@ -28,12 +28,18 @@ export default function Drawings() {
           </header>
           <div className="content">
             <ul className="drawings">
-              {drawings.value.map((drawing, index) => {
-                return <ListItem key={index} index={index} drawing={drawing} />;
+              {drawings.value.map((drawing) => {
+                return (
+                  <ListItem
+                    key={drawing.title}
+                    index={drawing.title}
+                    drawing={drawing}
+                  />
+                );
               })}
             </ul>
           </div>
-        </section>
+        </main>
       </div>
     </>
   );

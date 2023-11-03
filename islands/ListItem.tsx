@@ -10,7 +10,7 @@ function ListItem({
   index,
 }: {
   drawing: any;
-  index: number;
+  index: sting;
   updateDrawings: void;
 }) {
   if (!drawing) {

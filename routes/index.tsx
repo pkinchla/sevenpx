@@ -21,10 +21,10 @@ export default function Home({ data }: PageProps) {
         <title>Seven Pixels | Home</title>
         <meta
           name="description"
-          content="A small application about drawing, collage and editing scalable vector grahic portaits in the browser. Side project of Paul Kinchla."
+          content="A small application about drawing, collage and editing scalable vector graphic portraits in the browser. Side project of Paul Kinchla."
         />
       </Head>
-      <div className="intro-container">
+      <main className="intro-container">
         <div className="intro base-layout">
           <h1 className="page-title title">
             <Logo />
@@ -40,7 +40,7 @@ export default function Home({ data }: PageProps) {
             </a>
           </div>
         </div>
-      </div>
+      </main>
     </>
   );
 }

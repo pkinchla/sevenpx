@@ -66,6 +66,7 @@ h6 {
 h1 {
   letter-spacing: -0.015em;
   line-height: 1.25;
+  font-size: 1.5em;
 }
 
 h2 {
@@ -217,13 +218,13 @@ input:focus {
   position: relative;
 }
 
-.drawing-page section {
+.drawing-page main {
   margin-bottom: 8em;
   pointer-events: none;
 }
 
-.drawing-page section header,
-.drawing-page section .content {
+.drawing-page main header,
+.drawing-page main .content {
   pointer-events: auto;
 }
 
@@ -440,7 +441,7 @@ input:focus {
     content: "small 420-750";
   }
 
-  .drawing-page section {
+  .drawing-page main {
     text-align: right;
     margin-top: -7.4em;
   }
@@ -508,7 +509,7 @@ input:focus {
     margin-left: 0;
   }
 
-  .drawing-page section {
+  .drawing-page main {
     grid-column: 2 / 6;
     position: relative;
     text-align: left;
