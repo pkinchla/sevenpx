@@ -217,13 +217,13 @@ input:focus {
   position: relative;
 }
 
-.drawing-page main {
+.drawing-page section {
   margin-bottom: 8em;
   pointer-events: none;
 }
 
-.drawing-page main header,
-.drawing-page main.content {
+.drawing-page section header,
+.drawing-page section .content {
   pointer-events: auto;
 }
 
@@ -440,7 +440,7 @@ input:focus {
     content: "small 420-750";
   }
 
-  .drawing-page main {
+  .drawing-page section {
     text-align: right;
     margin-top: -7.4em;
   }
@@ -508,7 +508,7 @@ input:focus {
     margin-left: 0;
   }
 
-  .drawing-page main {
+  .drawing-page section {
     grid-column: 2 / 6;
     position: relative;
     text-align: left;

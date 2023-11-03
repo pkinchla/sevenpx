@@ -29,7 +29,7 @@ export default function Home({ data }: PageProps) {
           <h1 className="page-title title">
             <Logo />
           </h1>
-          <main className="copy">
+          <div className="copy">
             {data.hasError ? (
               <p>{data.error}</p>
             ) : (
@@ -38,7 +38,7 @@ export default function Home({ data }: PageProps) {
             <a href="/drawings/" className="single-link">
               View Drawings &rarr;
             </a>
-          </main>
+          </div>
         </div>
       </div>
     </>
