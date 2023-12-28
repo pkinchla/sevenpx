@@ -2,27 +2,28 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
-import * as $0 from "./routes/_404.tsx";
-import * as $1 from "./routes/_app.tsx";
-import * as $2 from "./routes/drawings.tsx";
-import * as $3 from "./routes/index.tsx";
-import * as $$0 from "./islands/ListItem.tsx";
-import * as $$1 from "./islands/Portrait.tsx";
-import * as $$2 from "./islands/VectorCollage.tsx";
+import * as $_404 from "./routes/_404.tsx";
+import * as $_app from "./routes/_app.tsx";
+import * as $drawings from "./routes/drawings.tsx";
+import * as $index from "./routes/index.tsx";
+import * as $ListItem from "./islands/ListItem.tsx";
+import * as $Portrait from "./islands/Portrait.tsx";
+import * as $VectorCollage from "./islands/VectorCollage.tsx";
+import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
-    "./routes/_404.tsx": $0,
-    "./routes/_app.tsx": $1,
-    "./routes/drawings.tsx": $2,
-    "./routes/index.tsx": $3,
+    "./routes/_404.tsx": $_404,
+    "./routes/_app.tsx": $_app,
+    "./routes/drawings.tsx": $drawings,
+    "./routes/index.tsx": $index,
   },
   islands: {
-    "./islands/ListItem.tsx": $$0,
-    "./islands/Portrait.tsx": $$1,
-    "./islands/VectorCollage.tsx": $$2,
+    "./islands/ListItem.tsx": $ListItem,
+    "./islands/Portrait.tsx": $Portrait,
+    "./islands/VectorCollage.tsx": $VectorCollage,
   },
   baseUrl: import.meta.url,
-};
+} satisfies Manifest;
 
 export default manifest;
