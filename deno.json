@@ -22,6 +22,6 @@
     "dontenv": "https://deno.land/x/dotenv/mod.ts",
     "$std/": "https://deno.land/std@0.193.0/"
   },
-  "compilerOptions": { "jsx": "precompile", "jsxImportSource": "preact" },
+  "compilerOptions": { "jsx": "react-jsx", "jsxImportSource": "preact" },
   "exclude": ["**/_fresh/*"]
 }
