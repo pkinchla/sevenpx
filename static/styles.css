@@ -17,20 +17,20 @@ html {
 body {
   line-height: 1.625;
   color: #1a1a1a;
-  font-family: "bookmania", Georgia, serif;
+  font-family: 'bookmania', Georgia, serif;
   font-weight: 400;
   font-size: 1.125em;
 }
 
 body::after {
-  content: "base 0-420";
+  content: 'base 0-420';
   display: inline-block;
   position: fixed;
   top: 0;
   left: 0;
   background: var(--primary-color);
   padding: 0.5em 1em;
-  font-family: "filson-pro", sans-serif;
+  font-family: 'filson-pro', sans-serif;
   color: white;
 }
 
@@ -59,7 +59,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "filson-pro", sans-serif;
+  font-family: 'filson-pro', sans-serif;
   font-weight: 300;
 }
 
@@ -93,7 +93,7 @@ a:focus {
 }
 
 .single-link {
-  font-family: "filson-pro", sans-serif;
+  font-family: 'filson-pro', sans-serif;
 }
 
 /* accessibility */
@@ -135,11 +135,20 @@ input:focus {
   outline-offset: 0.15em;
 }
 
-*[tabindex="-1"]:focus {
+*[tabindex='-1']:focus {
   outline: none;
 }
 
-#__next {
+html:has(.active),
+html:has(.active) body {
+  overflow-y: hidden;
+}
+
+html:has(.active) body {
+  position: relative;
+}
+
+body {
   overflow-x: hidden;
   max-width: 100vw;
   position: relative;
@@ -156,7 +165,7 @@ input:focus {
 .title {
   font-size: 3rem;
   line-height: 1;
-  font-family: "filson-pro", sans-serif;
+  font-family: 'filson-pro', sans-serif;
   height: 3em;
   width: 3em;
   display: flex;
@@ -296,7 +305,7 @@ input:focus {
   display: block;
   text-align: center;
   width: 100%;
-  font-family: "filson-pro", sans-serif;
+  font-family: 'filson-pro', sans-serif;
 }
 .drawings .draggable {
   cursor: move;
@@ -438,7 +447,7 @@ input:focus {
     font-size: 1.125rem;
   }
   body::after {
-    content: "small 420-750";
+    content: 'small 420-750';
   }
 
   .drawing-page main {
@@ -465,7 +474,7 @@ input:focus {
 
 @media screen and (min-width: 46.875em) {
   body::after {
-    content: "medium 750-1020";
+    content: 'medium 750-1020';
   }
 
   h1 {
@@ -523,7 +532,7 @@ input:focus {
 
 @media screen and (min-width: 63.75em) {
   body::after {
-    content: "large 1020-1500";
+    content: 'large 1020-1500';
   }
   .title {
     margin-top: 15rem;
@@ -536,6 +545,6 @@ input:focus {
 
 @media screen and (min-width: 93.75em) {
   body::after {
-    content: "Jumbo 1500--";
+    content: 'Jumbo 1500--';
   }
 }

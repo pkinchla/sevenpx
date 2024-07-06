@@ -1,16 +1,16 @@
 // import FocusTrap from 'focus-trap-react';
-import classNames from "classnames";
-import Portrait from "./Portrait.tsx";
+import classNames from 'classnames';
+import Portrait from './Portrait.tsx';
 // import useControlScroll from './hooks/useControlScroll';
-import active from "../components/ActiveIndex.tsx";
-import { IS_BROWSER } from "$fresh/runtime.ts";
+import active from '../components/ActiveIndex.tsx';
+import { IS_BROWSER } from '$fresh/runtime.ts';
 
 function ListItem({
   drawing,
   index,
 }: {
   drawing: any;
-  index: sting;
+  index: number;
   updateDrawings: void;
 }) {
   if (!drawing) {
@@ -19,7 +19,7 @@ function ListItem({
 
   const buttonClasses = classNames({
     edit: active.value !== index,
-    ["disable-editing"]: active.value !== index,
+    ['disable-editing']: active.value !== index,
   });
 
   const displayName = drawing?.children[0]?.children[0]?.value || drawing.title;
@@ -30,7 +30,7 @@ function ListItem({
 
   return (
     // <FocusTrap active={active === index}>
-    <li className={active.value === index ? "active" : ""}>
+    <li className={active.value === index ? 'active' : ''}>
       <Portrait
         viewBox={drawing.attributes.viewBox}
         title={drawing.title}
@@ -45,7 +45,7 @@ function ListItem({
           onClick={() => handleclick(active.value, index)}
         >
           <span>
-            {active.value === index ? "Finish Editing" : "Edit"}
+            {active.value === index ? 'Finish Editing' : 'Edit'}
             <span className="assistive-text">{`${displayName} portrait`}</span>
           </span>
         </button>
