@@ -1,7 +1,6 @@
 // import FocusTrap from 'focus-trap-react';
 import classNames from 'classnames';
 import Portrait from './Portrait.tsx';
-// import useControlScroll from './hooks/useControlScroll';
 import active from '../components/ActiveIndex.tsx';
 import { IS_BROWSER } from '$fresh/runtime.ts';
 

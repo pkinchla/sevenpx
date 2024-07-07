@@ -1,7 +1,7 @@
-import { Head } from "$fresh/runtime.ts";
-import Logo from "../components/Logo.tsx";
-import drawings from "../components/DrawingsSignal.tsx";
-import ListItem from "../islands/ListItem.tsx";
+import { Head } from '$fresh/runtime.ts';
+import Logo from '../components/Logo.tsx';
+import List from '../islands/List.tsx';
+import ResetDrawings from '../islands/ResetDrawings.tsx';
 
 export default function Drawings() {
   return (
@@ -25,19 +25,11 @@ export default function Drawings() {
             <a href="/" as="/" className="single-link">
               Home
             </a>
+            <br />
+            <ResetDrawings />
           </header>
           <div className="content">
-            <ul className="drawings">
-              {drawings.value.map((drawing) => {
-                return (
-                  <ListItem
-                    key={drawing.title}
-                    index={drawing.title}
-                    drawing={drawing}
-                  />
-                );
-              })}
-            </ul>
+            <List />
           </div>
         </main>
       </div>

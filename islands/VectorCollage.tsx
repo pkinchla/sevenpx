@@ -1,7 +1,7 @@
-import drawings from "../components/DrawingsSignal.tsx";
+import drawings from '../components/DrawingsSignal.tsx';
 
 function generatePaths(svgs: any) {
-  const fills = ["path-green", "path-purple", "path-black"];
+  const fills = ['path-green', 'path-purple', 'path-black'];
   const collage = [];
 
   for (let i = 0; i < svgs.length; i++) {
@@ -9,7 +9,7 @@ function generatePaths(svgs: any) {
     for (let j = 0; j < svg.children.length; j++) {
       const child = svg.children[j];
 
-      if (child.name === "path") {
+      if (child.name === 'path') {
         collage.push({
           path: child.attributes.d,
           transform: child.attributes.transform ?? null,

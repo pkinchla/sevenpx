@@ -1,7 +1,8 @@
 import { signal } from "@preact/signals";
-import svgs from "../svgs.json" assert { type: "json" };
+import svgs from "../svgs.json" with { type: "json" };
 
-const drawings = signal(svgs);
+const storedDrawings = localStorage.getItem("drawings");
+const drawings = storedDrawings ? signal(JSON.parse(storedDrawings)) : signal(svgs);
 
 export function updateDrawings(
   title: string,
@@ -23,8 +24,10 @@ export function updateDrawings(
       item.attributes.transform = transform;
     }
   });
-
+  
+  localStorage.setItem("drawings", JSON.stringify(copy));
   drawings.value = copy;
+
 }
 
 export default drawings;
