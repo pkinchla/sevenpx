@@ -139,15 +139,6 @@ input:focus {
   outline: none;
 }
 
-html:has(.active),
-html:has(.active) body {
-  overflow-y: hidden;
-}
-
-html:has(.active) body {
-  position: relative;
-}
-
 body {
   overflow-x: hidden;
   max-width: 100vw;

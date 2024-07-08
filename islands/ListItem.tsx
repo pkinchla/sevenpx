@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import Portrait from './Portrait.tsx';
 import active from '../components/ActiveIndex.tsx';
 import { IS_BROWSER } from '$fresh/runtime.ts';
+import useControlScroll from '../utils/hooks/useControlScroll.ts';
 
 function ListItem({
   drawing,
@@ -16,6 +17,8 @@ function ListItem({
     return null;
   }
 
+  const [blockScroll, allowScroll] = useControlScroll();
+
   const buttonClasses = classNames({
     edit: active.value !== index,
     ['disable-editing']: active.value !== index,
@@ -24,7 +27,11 @@ function ListItem({
   const displayName = drawing?.children[0]?.children[0]?.value || drawing.title;
 
   const handleclick = (current: number | null, index: number) => {
+    if (index === current) {
+      allowScroll();
+    }
     active.value = index === current ? null : index;
+    blockScroll();
   };
 
   return (
