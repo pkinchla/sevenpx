@@ -4,6 +4,8 @@ import Portrait from './Portrait.tsx';
 import active from '../components/ActiveIndex.tsx';
 import { IS_BROWSER } from '$fresh/runtime.ts';
 import useControlScroll from '../utils/hooks/useControlScroll.ts';
+import useFocusTrap from '../utils/hooks/useFocusTrap.ts';
+import { useRef } from 'preact/hooks';
 
 function ListItem({
   drawing,
@@ -17,23 +19,28 @@ function ListItem({
     return null;
   }
 
+  const displayName = drawing?.children[0]?.children[0]?.value || drawing.title;
   const [blockScroll, allowScroll] = useControlScroll();
+  const listItemRef = useRef<HTMLLIElement>(null);
+  useFocusTrap(listItemRef, active.value ? true : false);
 
   const buttonClasses = classNames({
     edit: active.value !== index,
-    ['disable-editing']: active.value !== index,
+    ['disable-editing']: active.value === index,
   });
-
-  const displayName = drawing?.children[0]?.children[0]?.value || drawing.title;
 
   const handleclick = (current: number | null, index: number) => {
     active.value = index === current ? null : index;
-    active?.value ? blockScroll() : allowScroll();
+    active.value ? blockScroll() : allowScroll();
+    listItemRef.current?.focus();
   };
 
   return (
-    // <FocusTrap active={active === index}>
-    <li className={active.value === index ? 'active' : ''}>
+    <li
+      tabIndex={-1}
+      ref={listItemRef}
+      className={active.value === index ? 'active' : ''}
+    >
       <Portrait
         viewBox={drawing.attributes.viewBox}
         title={drawing.title}
@@ -54,7 +61,6 @@ function ListItem({
         </button>
       )}
     </li>
-    // </FocusTrap>
   );
 }
 

@@ -110,7 +110,7 @@ export default function Portrait({ active, name, viewBox, title, paths }) {
         return (
           <path
             className="draggable"
-            tabIndex={active ? 0 : -1}
+            tabindex={active ? 0 : -1}
             key={index}
             d={item.attributes.d}
             transform={item.attributes.transform}
