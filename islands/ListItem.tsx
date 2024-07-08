@@ -27,11 +27,8 @@ function ListItem({
   const displayName = drawing?.children[0]?.children[0]?.value || drawing.title;
 
   const handleclick = (current: number | null, index: number) => {
-    if (index === current) {
-      allowScroll();
-    }
     active.value = index === current ? null : index;
-    blockScroll();
+    active?.value ? blockScroll() : allowScroll();
   };
 
   return (
