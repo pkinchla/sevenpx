@@ -4,8 +4,6 @@ import svgs from "../svgs.json" with { type: "json" };
 
 export default function ResetDrawings() {
   const handleReset = () => {
-    const copy = svgs;
-    
     drawings.value = svgs;
     localStorage.setItem("drawings", JSON.stringify(svgs));
     window.location.reload();

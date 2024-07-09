@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'preact/hooks';
-import drawings, { updateDrawings } from '../components/DrawingsSignal.tsx';
+import { updateDrawings } from '../components/DrawingsSignal.tsx';
 
 export default function Portrait({ active, name, viewBox, title, paths }) {
-  const drawing = useRef(null);
+  const drawing = useRef<SVGElement>(null);
 
   function makeDraggable() {
     var svg = drawing?.current;

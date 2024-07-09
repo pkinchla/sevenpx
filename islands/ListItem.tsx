@@ -6,15 +6,9 @@ import { IS_BROWSER } from '$fresh/runtime.ts';
 import useControlScroll from '../utils/hooks/useControlScroll.ts';
 import useFocusTrap from '../utils/hooks/useFocusTrap.ts';
 import { useRef } from 'preact/hooks';
+import { Drawing } from '../utils/interfaces/drawing.ts';
 
-function ListItem({
-  drawing,
-  index,
-}: {
-  drawing: any;
-  index: number;
-  updateDrawings: void;
-}) {
+function ListItem({ drawing, index }: { drawing: Drawing; index: string }) {
   if (!drawing) {
     return null;
   }
@@ -29,7 +23,7 @@ function ListItem({
     ['disable-editing']: active.value === index,
   });
 
-  const handleclick = (current: number | null, index: number) => {
+  const handleclick = (current: string | null, index: string) => {
     active.value = index === current ? null : index;
     active.value ? blockScroll() : allowScroll();
     listItemRef.current?.focus();

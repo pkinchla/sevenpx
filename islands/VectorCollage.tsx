@@ -1,6 +1,7 @@
 import drawings from '../components/DrawingsSignal.tsx';
+import { Drawing } from '../utils/interfaces/drawing.ts';
 
-function generatePaths(svgs: any) {
+function generatePaths(svgs: Drawing[]) {
   const fills = ['path-green', 'path-purple', 'path-black'];
   const collage = [];
 

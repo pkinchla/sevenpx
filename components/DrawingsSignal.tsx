@@ -1,5 +1,6 @@
 import { signal } from "@preact/signals";
 import svgs from "../svgs.json" with { type: "json" };
+import { Drawing } from "../utils/interfaces/drawing.ts";
 
 const storedDrawings = localStorage.getItem("drawings");
 const drawings = storedDrawings ? signal(JSON.parse(storedDrawings)) : signal(svgs);
@@ -7,8 +8,8 @@ const drawings = storedDrawings ? signal(JSON.parse(storedDrawings)) : signal(sv
 export function updateDrawings(
   title: string,
   path: string,
-  index: number,
-  transform: number
+  index: string,
+  transform: string
 ) {
   const copy = [...drawings.value];
 
@@ -18,7 +19,7 @@ export function updateDrawings(
   });
 
   // update appropriate path
-  target[0].children.map((item, path_index) => {
+  target[0].children.map((item: Drawing, path_index: string) => {
     if (index === path_index) {
       item.attributes.d = path;
       item.attributes.transform = transform;

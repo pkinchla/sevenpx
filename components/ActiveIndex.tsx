@@ -1,5 +1,5 @@
-import { signal } from "@preact/signals";
+import { signal } from '@preact/signals';
 
-const active = signal<number | null>(null);
+const active = signal<string | null>(null);
 
 export default active;
