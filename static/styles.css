@@ -298,11 +298,6 @@ body {
 }
 
 .drawings li.active svg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-height: 100dvh;
   height: 100%;
   width: 100%;
 }
@@ -377,6 +372,7 @@ body {
   color: white;
   padding: 0.5em 0.75em;
 }
+
 .drawings li .edit:focus span,
 .drawings li .edit:hover span {
   opacity: 1;
@@ -392,7 +388,6 @@ body {
 }
 
 .background {
-  will-change: transform;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) translateZ(0);
@@ -404,10 +399,23 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 .background svg {
+  animation-timing-function: linear;
+}
+
+.background svg {
+  will-change: transform;
   height: 61.1111111111em;
   overflow: visible;
-  animation: infinite-spinning 420s infinite;
+}
+
+.background-animation {
+  animation-timing-function: linear;
+  animation-duration: 420s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+  animation-name: infinite-spinning;
 }
 
 .path-green {
