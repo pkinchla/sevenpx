@@ -11,7 +11,7 @@ import * as $ListItem from "./islands/ListItem.tsx";
 import * as $Portrait from "./islands/Portrait.tsx";
 import * as $ResetDrawings from "./islands/ResetDrawings.tsx";
 import * as $VectorCollage from "./islands/VectorCollage.tsx";
-import { type Manifest } from "$fresh/server.ts";
+import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
