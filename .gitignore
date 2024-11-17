@@ -10,7 +10,6 @@ _fresh/
 
 # drawing files
 /svg
-svgs.json
 
 # System files
 .DS_Store
