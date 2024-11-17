@@ -1,0 +1,3 @@
+[build]
+command = "deno task preview"
+publish = "."
