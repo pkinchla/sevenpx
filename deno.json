@@ -16,7 +16,7 @@
       "tags": ["fresh", "recommended"]
     }
   },
-  "exclude": ["**/_fresh/*", "**/svgs.json"],
+  "exclude": ["**/_fresh/*", "**/svgs.json", "**/static/*"],
   "imports": {
     "$fresh/": "https://deno.land/x/fresh@1.7.3/",
     "autoprefixer": "npm:autoprefixer@^10.4.20",
