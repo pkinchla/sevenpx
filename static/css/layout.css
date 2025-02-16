@@ -55,4 +55,9 @@ main {
     grid-column: 2 / 6;
     grid-row-start: 1;
   }
+
+  body > main.drawings-page {
+    grid-column: 2 / 8;
+    grid-row-start: 1;
+  }
 }
