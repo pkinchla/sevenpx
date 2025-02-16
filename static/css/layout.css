@@ -16,8 +16,9 @@ main {
   border: var(--border-width) solid var(--text-color);
 }
 
-.home-content {
+.content-block {
   padding-block: 3em;
+  padding-block-start: 1em;
   padding-inline: 1.5em;
 }
 
