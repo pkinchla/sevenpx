@@ -28,7 +28,7 @@
   text-decoration: none;
   width: calc(100% - 0.5em);
   text-align: center;
-  font-family: "filson-pro", sans-serif;
+  font-family: var(--font-sans-serif);
 }
 
 :focus {
@@ -55,7 +55,7 @@ a:focus {
 }
 
 .single-link {
-  font-family: "filson-pro", sans-serif;
+  font-family: var(--font-sans-serif);
 }
 
 .button {
@@ -67,7 +67,7 @@ a:focus {
   appearance: none;
   padding: 1em 1.5em;
   border-width: 0;
-  font-family: "filson-pro", sans-serif;
+  font-family: var(--font-sans-serif);
   font-style: inherit;
   font-weight: inherit;
   cursor: pointer;

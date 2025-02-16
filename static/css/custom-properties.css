@@ -7,4 +7,6 @@
   /* borders  */
   --border-width: 0.4375rem;
   --border-radius: 0.4375rem;
+
+  --font-sans-serif: "Inter", sans-serif;
 }

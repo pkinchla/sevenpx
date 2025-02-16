@@ -1,7 +1,13 @@
+@font-face {
+  font-display: swap;
+  font-family: "Inter";
+  src: url("/inter-variable.woff2") format("woff2-variations");
+}
+
 body {
   line-height: 1.625;
   color: var(--body-color);
-  font-family: "bookmania", Georgia, serif;
+  font-family: Georgia, serif;
   font-weight: 400;
   font-size: 1.125em;
 }
@@ -12,8 +18,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "filson-pro", sans-serif;
-  font-weight: 300;
+  font-family: var(--font-sans-serif);
+  font-weight: 500;
   margin-top: 0;
 }
 
