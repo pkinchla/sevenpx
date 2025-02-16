@@ -17,6 +17,11 @@ main {
   background: rgba(255, 255, 255, 0.95);
 }
 
+main.drawings-page {
+  background: transparent;
+  border: none;
+}
+
 .content-block {
   padding-block: 3em;
   padding-block-start: 1em;

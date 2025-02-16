@@ -88,6 +88,7 @@
   top: 1em;
   bottom: inherit;
   display: inline-block;
+  border-radius: var(--border-radius);
 }
 
 .drawings li .edit {
@@ -113,6 +114,7 @@
   right: 0.6em;
   color: white;
   padding: 1em 1.5em;
+  border-radius: var(--border-radius);
 }
 
 .drawings li .edit:focus span,
