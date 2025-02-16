@@ -15,10 +15,16 @@ header svg {
 }
 
 .home-link {
+  transition: color 0.35s, background 0.35s;
   color: var(--body-color);
   display: block;
   height: 100%;
   width: 100%;
+}
+
+.home-link:hover, .home-link:focus {
+  color: var(--background-color);
+  background-color: var(--primary-color);
 }
 
 @media screen and (min-width: 56.25em) {
