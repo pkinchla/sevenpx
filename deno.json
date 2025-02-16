@@ -16,7 +16,7 @@
   "imports": {
     "$fresh/": "https://deno.land/x/fresh@1.7.3/",
     "autoprefixer": "npm:autoprefixer@^10.4.20",
-    "classnames": "https://deno.land/x/classnames@0.1.1",
+    "classnames": "npm:classnames@^2.5.1",
     "contentful": "https://esm.sh/contentful@9.3.5",
     "marked": "https://esm.sh/marked@4.3.0",
     "postcss": "npm:postcss@^8.5.1",

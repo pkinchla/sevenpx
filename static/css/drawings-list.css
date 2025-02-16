@@ -1,0 +1,143 @@
+.drawings {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding: 0 2.25%;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.drawings li {
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  height: 100%;
+  width: 100%;
+  background: white;
+  box-shadow: 0 0 0 0.4375rem black;
+  padding-bottom: 4em;
+}
+
+.drawings li.active {
+  background: rgba(255, 255, 255, 0.95);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100dvh;
+  z-index: 10;
+  transform: translate3d(0);
+  animation: zoomIn 0.5s;
+}
+
+.drawings li.active svg {
+  height: 100%;
+  width: 100%;
+}
+
+.drawings svg {
+  display: block;
+}
+
+.drawings .name {
+  position: absolute;
+  bottom: 3em;
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-family: "filson-pro", sans-serif;
+}
+.drawings .draggable {
+  cursor: move;
+}
+
+.drawings li button {
+  font-size: 1em;
+  background: var(--primary-color);
+  position: absolute;
+  top: 0.6em;
+  right: 0.6em;
+  color: white;
+  padding: 0.5em 0.75em;
+  border: none;
+  box-shadow: none;
+}
+
+.drawings .draggable {
+  cursor: move;
+  transition: stroke-width 0.35s ease-in-out;
+}
+
+.drawings .draggable:focus {
+  outline: none;
+  stroke: var(--primary-color);
+  stroke-width: 0.2175em;
+}
+
+.drawings li .disable-editing {
+  top: 1em;
+  bottom: inherit;
+  display: inline-block;
+}
+
+.drawings li .edit {
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  background: none;
+  padding: 0;
+}
+
+.drawings li .edit:focus {
+  outline-width: 0.275em;
+  outline-offset: -0.2em;
+}
+
+.drawings li .edit span {
+  transition: opacity 0.35s ease-in-out;
+  opacity: 0;
+  background: var(--primary-color);
+  position: absolute;
+  top: 0.6em;
+  right: 0.6em;
+  color: white;
+  padding: 0.5em 0.75em;
+}
+
+.drawings li .edit:focus span,
+.drawings li .edit:hover span {
+  opacity: 1;
+}
+
+@media screen and (min-width: 15.625em) {
+  .drawings li {
+    padding-bottom: 0;
+  }
+
+  .drawings li .name {
+    bottom: 0.85em;
+  }
+}
+
+@media screen and (min-width: 26.25em) {
+  body {
+    font-size: 1.125rem;
+  }
+
+  .drawings {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16em, 1fr));
+    grid-gap: 7px;
+    padding: 0;
+  }
+}

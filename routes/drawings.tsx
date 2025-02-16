@@ -1,4 +1,5 @@
 import { Head } from "$fresh/runtime.ts";
+import List from "../islands/List.tsx";
 
 export default function Drawings() {
   return (
@@ -6,9 +7,7 @@ export default function Drawings() {
       <Head>
         <title>Seven Pixels | Drawings</title>
       </Head>
-      <div className="content-block">
-        <h1>Drawings</h1>
-      </div>
+      <List />
     </>
   );
 }
