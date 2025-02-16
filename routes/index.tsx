@@ -20,8 +20,8 @@ export default function Home({ data }: PageProps) {
         <h1 class="visually-hidden">Home Page</h1>
         <pre>{JSON.stringify(data, null, 2)}</pre>
         {data?.hasError
-          ? <p>{data.error}</p>
-          : <div dangerouslySetInnerHTML={{ __html: data.copy }} />}
+          ? <p>{data?.error}</p>
+          : <div dangerouslySetInnerHTML={{ __html: data?.copy }} />}
       </div>
     </>
   );
