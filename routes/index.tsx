@@ -1,12 +1,27 @@
 import { Head } from "$fresh/runtime.ts";
+import { Handlers, PageProps } from "$fresh/server.ts";
+import { getContent } from "../utils/server.ts";
 
-export default function Home() {
+export const handler: Handlers = {
+  async GET(_, ctx) {
+    const content = await getContent();
+
+    return content.hasError ? ctx.render(null) : ctx.render(content);
+  },
+};
+
+export default function Home({ data }: PageProps) {
   return (
     <>
       <Head>
         <title>Home</title>
       </Head>
-      <h1>Home Page</h1>
+      <div className="home-content">
+        <h1 class="visually-hidden">Home Page</h1>
+        {data.hasError
+          ? <p>{data.error}</p>
+          : <div dangerouslySetInnerHTML={{ __html: data.copy }} />}
+      </div>
     </>
   );
 }

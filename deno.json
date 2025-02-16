@@ -8,18 +8,17 @@
     "build": "deno run -A dev.ts build",
     "preview": "deno run -A main.ts",
     "update": "deno run -A -r https://fresh.deno.dev/update .",
-    "process:drawings": "deno run -A handle-svg-files.ts",
+    "process:drawings": "deno run -A process.svg.ts",
     "process:css": "deno run -A --watch=static/css/ process.css.ts"
   },
-  "lint": {
-    "rules": {
-      "tags": ["fresh", "recommended"]
-    }
-  },
+  "lint": { "rules": { "tags": ["fresh", "recommended"] } },
   "exclude": ["**/_fresh/*", "**/svgs.json", "**/static/*"],
   "imports": {
     "$fresh/": "https://deno.land/x/fresh@1.7.3/",
     "autoprefixer": "npm:autoprefixer@^10.4.20",
+    "classnames": "https://deno.land/x/classnames@0.1.1",
+    "contentful": "https://esm.sh/contentful@9.3.5",
+    "marked": "https://esm.sh/marked@4.3.0",
     "postcss": "npm:postcss@^8.5.1",
     "postcss-csso": "npm:postcss-csso@^6.0.1",
     "postcss-import": "npm:postcss-import@^16.1.0",
@@ -29,8 +28,5 @@
     "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.5.1",
     "$std/": "https://deno.land/std@0.216.0/"
   },
-  "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "preact"
-  }
+  "compilerOptions": { "jsx": "react-jsx", "jsxImportSource": "preact" }
 }

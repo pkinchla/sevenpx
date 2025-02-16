@@ -1,0 +1,21 @@
+header {
+  border: var(--border-width) solid var(--text-color);
+  border-block-end: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-color);
+  position: relative;
+  z-index: 1;
+}
+
+header svg {
+  display: inline-block;
+  stroke-width: 7;
+}
+
+@media screen and (min-width: 56.25em) {
+  header {
+    border-block-end: var(--border-width) solid var(--text-color);
+  }
+}
