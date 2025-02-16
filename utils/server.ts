@@ -1,14 +1,12 @@
 import { createClient } from "contentful";
 import { marked } from "marked";
 
-const SPACE_ID = Deno.env.get("SPACE_ID");
-const ACCESS_TOKEN = Deno.env.get("ACCESS_TOKEN");
-const CONTENT_ENTRY = Deno.env.get("CONTENT_ENTRY");
+const SPACE_ID = Deno.env.get("SPACE_ID") as string;
+const ACCESS_TOKEN = Deno.env.get("ACCESS_TOKEN") as string;
+const CONTENT_ENTRY = Deno.env.get("CONTENT_ENTRY") as string;
 
 // run server side
 export async function getContent() {
-  console.log(SPACE_ID, ACCESS_TOKEN, CONTENT_ENTRY);
-
   const client = createClient({
     space: SPACE_ID,
     accessToken: ACCESS_TOKEN,

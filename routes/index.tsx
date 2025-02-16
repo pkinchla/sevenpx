@@ -6,7 +6,7 @@ export const handler: Handlers = {
   async GET(_, ctx) {
     const content = await getContent();
 
-    return content.hasError ? ctx.render(null) : ctx.render(content);
+    return ctx.render(content);
   },
 };
 
@@ -18,10 +18,14 @@ export default function Home({ data }: PageProps) {
       </Head>
       <div className="home-content">
         <h1 class="visually-hidden">Home Page</h1>
-        <pre>{JSON.stringify(data, null, 2)}</pre>
-        {data?.hasError
-          ? <p>{data?.error}</p>
-          : <div dangerouslySetInnerHTML={{ __html: data?.copy }} />}
+        {data.hasError
+          ? (
+            <>
+              <h2>Error</h2>
+              <p>{data.error}</p>
+            </>
+          )
+          : <div dangerouslySetInnerHTML={{ __html: data.copy }} />}
       </div>
     </>
   );
