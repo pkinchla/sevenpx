@@ -44,6 +44,10 @@ main {
     grid-row-start: 1;
   }
 
+  body > main.drawings-page {
+    grid-column: 2 / 8;
+  }
+
   .content-block {
     padding-block: 3em;
     padding-inline: 7em;
@@ -53,11 +57,6 @@ main {
 @media screen and (min-width: 90em) {
   body > main {
     grid-column: 2 / 6;
-    grid-row-start: 1;
-  }
-
-  body > main.drawings-page {
-    grid-column: 2 / 8;
     grid-row-start: 1;
   }
 }
