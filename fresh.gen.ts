@@ -7,7 +7,7 @@ import * as $_app from "./routes/_app.tsx";
 import * as $api_joke from "./routes/api/joke.ts";
 import * as $drawings from "./routes/drawings.tsx";
 import * as $index from "./routes/index.tsx";
-
+import * as $VectorCollage from "./islands/VectorCollage.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -18,7 +18,9 @@ const manifest = {
     "./routes/drawings.tsx": $drawings,
     "./routes/index.tsx": $index,
   },
-  islands: {},
+  islands: {
+    "./islands/VectorCollage.tsx": $VectorCollage,
+  },
   baseUrl: import.meta.url,
 } satisfies Manifest;
 

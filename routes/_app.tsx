@@ -1,6 +1,7 @@
 import { type PageProps } from "$fresh/server.ts";
 import { asset } from "$fresh/runtime.ts";
 import Logo from "../components/Logo.tsx";
+import Vector from "../islands/VectorCollage.tsx";
 
 export default function App({ Component }: PageProps) {
   return (
@@ -22,6 +23,7 @@ export default function App({ Component }: PageProps) {
         <main id="main-content">
           <Component />
         </main>
+        <Vector />
       </body>
     </html>
   );
