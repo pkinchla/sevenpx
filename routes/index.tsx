@@ -14,9 +14,9 @@ export default function Home({ data }: PageProps) {
   return (
     <>
       <Head>
-        <title>Home</title>
+        <title>Seven Pixels | Home</title>
       </Head>
-      <div className="home-content">
+      <div className="content-block">
         <h1 class="visually-hidden">Home Page</h1>
         {data.hasError
           ? (
@@ -26,6 +26,7 @@ export default function Home({ data }: PageProps) {
             </>
           )
           : <div dangerouslySetInnerHTML={{ __html: data.copy }} />}
+        <a href="/drawings/" class="single-link">View Drawings →</a>
       </div>
     </>
   );

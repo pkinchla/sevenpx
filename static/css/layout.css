@@ -42,7 +42,7 @@ main {
     grid-row-start: 1;
   }
 
-  .home-content {
+  .content-block {
     padding-block: 3em;
     padding-inline: 7em;
   }
