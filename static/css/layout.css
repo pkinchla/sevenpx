@@ -20,6 +20,7 @@ main {
 main.drawings-page {
   background: transparent;
   border: none;
+  margin-block-end: 2em;
 }
 
 .content-block {
@@ -51,6 +52,7 @@ main.drawings-page {
 
   body > main.drawings-page {
     grid-column: 2 / 8;
+    margin-block-start: 2em;
   }
 
   .content-block {
