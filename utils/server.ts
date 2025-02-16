@@ -1,4 +1,3 @@
-import "jsr:@std/dotenv/load";
 import { createClient } from "contentful";
 import { marked } from "marked";
 
@@ -8,6 +7,8 @@ const CONTENT_ENTRY = Deno.env.get("CONTENT_ENTRY");
 
 // run server side
 export async function getContent() {
+  console.log(SPACE_ID, ACCESS_TOKEN, CONTENT_ENTRY);
+
   const client = createClient({
     space: SPACE_ID,
     accessToken: ACCESS_TOKEN,
