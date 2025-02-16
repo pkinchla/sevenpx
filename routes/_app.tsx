@@ -1,9 +1,16 @@
-import { type PageProps } from "$fresh/server.ts";
+import { Handlers, type PageProps } from "$fresh/server.ts";
 import { asset } from "$fresh/runtime.ts";
 import Logo from "../components/Logo.tsx";
 import Vector from "../islands/VectorCollage.tsx";
 
-export default function App({ Component }: PageProps) {
+export const handler: Handlers = {
+  GET(_, ctx) {
+    const route = ctx.route;
+
+    return ctx.render(route);
+  },
+};
+export default function App({ Component, route }: PageProps) {
   return (
     <html>
       <head>
@@ -17,9 +24,12 @@ export default function App({ Component }: PageProps) {
           <a class="visually-hidden" href="#main-content">
             Skip to main content
           </a>
-          <Logo />
+          {route === "/" ? <Logo /> : (
+            <a href="/" class="home-link">
+              <Logo />
+            </a>
+          )}
         </header>
-
         <main id="main-content">
           <Component />
         </main>

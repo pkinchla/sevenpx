@@ -10,8 +10,15 @@ header {
 }
 
 header svg {
-  display: inline-block;
+  display: block;
   stroke-width: 7;
+}
+
+.home-link {
+  color: var(--body-color);
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 @media screen and (min-width: 56.25em) {
