@@ -1,0 +1,51 @@
+.background {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateZ(0);
+  overflow: visible;
+  position: fixed;
+  width: 61.1111111111em;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.background svg {
+  animation-timing-function: linear;
+}
+
+.background svg {
+  will-change: transform;
+  height: 61.1111111111em;
+  overflow: visible;
+}
+
+.background-animation {
+  animation-timing-function: linear;
+  animation-duration: 420s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+  animation-name: infinite-spinning;
+}
+
+.path-green {
+  fill: var(--secondary-color);
+}
+
+.path-purple {
+  fill: var(--primary-color);
+}
+
+.path-black {
+  fill: --body-color;
+}
+
+@keyframes infinite-spinning {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

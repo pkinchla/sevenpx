@@ -13,7 +13,8 @@ body > header {
 
 main {
   align-self: center;
-  border: var(--border-width) solid var(--text-color);
+  border: var(--border-width) solid var(--body-color);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .content-block {
