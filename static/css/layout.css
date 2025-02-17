@@ -31,7 +31,8 @@ main.drawings-page {
 
 @media screen and (min-width: 56.25em) {
   body > header {
-    margin-top: 5rem;
+    margin-top: 21em;
+    align-self: start;
     max-width: unset;
   }
 
