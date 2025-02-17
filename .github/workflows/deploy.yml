@@ -1,9 +1,9 @@
 name: Deploy
 on:
   push:
-    branches: move-to-ddeploy
+    branches: main
   pull_request:
-    branches: move-to-ddeploy
+    branches: main
 
 jobs:
   deploy:
@@ -32,3 +32,5 @@ jobs:
           project: "paulkinchla-sevenpx"
           entrypoint: "main.ts"
           root: "."
+          
+          
