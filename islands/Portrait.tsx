@@ -6,14 +6,14 @@ export default function Portrait({ active, name, viewBox, title, paths }) {
 
   function makeDraggable() {
     var svg = drawing?.current;
-    svg.addEventListener("mousedown", startDrag, false);
-    svg.addEventListener("mousemove", drag, false);
-    svg.addEventListener("mouseup", endDrag, false);
-    svg.addEventListener("touchstart", startDrag);
-    svg.addEventListener("touchmove", drag);
-    svg.addEventListener("touchend", endDrag);
-    svg.addEventListener("touchleave", endDrag);
-    svg.addEventListener("touchcancel", endDrag);
+    svg.addEventListener("mousedown", startDrag, { passive: true });
+    svg.addEventListener("mousemove", drag, { passive: true });
+    svg.addEventListener("mouseup", endDrag, { passive: true });
+    svg.addEventListener("touchstart", startDrag, { passive: true });
+    svg.addEventListener("touchmove", drag, { passive: true });
+    svg.addEventListener("touchend", endDrag, { passive: true });
+    svg.addEventListener("touchleave", endDrag, { passive: true });
+    svg.addEventListener("touchcancel", endDrag, { passive: true });
 
     var selectedElement, dragX, dragY;
     var reTranslate = /translate\s*\(([-+\d.\s,e]+)\)/gi;
