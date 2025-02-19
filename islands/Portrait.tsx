@@ -1,7 +1,10 @@
 import { useEffect, useRef } from "preact/hooks";
 import { updateDrawings } from "../signals/DrawingsState.ts";
+import { Drawing } from "../interfaces/drawing.model.ts";
 
-export default function Portrait({ active, name, viewBox, title, paths }) {
+export default function Portrait(
+  { active, name, viewBox, title, paths }: Drawing,
+) {
   const drawing = useRef<SVGElement>(null);
 
   function makeDraggable() {

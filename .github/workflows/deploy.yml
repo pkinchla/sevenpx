@@ -32,5 +32,3 @@ jobs:
           project: "paulkinchla-sevenpx"
           entrypoint: "main.ts"
           root: "."
-          
-          

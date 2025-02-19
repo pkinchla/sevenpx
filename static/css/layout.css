@@ -29,7 +29,7 @@ main.drawings-page {
   padding-inline: 1.5em;
 }
 
-@media screen and (min-width: 56.25em) {
+@media screen and (min-width: 55em) {
   body > header {
     margin-top: 21em;
     align-self: start;
@@ -47,7 +47,7 @@ main.drawings-page {
   }
 
   body > main {
-    grid-column: 2 / 7;
+    grid-column: 2 / 8;
     grid-row-start: 1;
   }
 
@@ -63,9 +63,8 @@ main.drawings-page {
   }
 }
 
-@media screen and (min-width: 90em) {
-  body > main {
+@media screen and (min-width: 75em) {
+  body > main:not(.drawings-page) {
     grid-column: 2 / 6;
-    grid-row-start: 1;
   }
 }
