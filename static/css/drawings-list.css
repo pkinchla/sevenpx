@@ -112,6 +112,7 @@
   height: 100%;
   transform: translate(-50%, -50%);
   background: none;
+  outline-color: var(--primary-color);
 }
 
 .drawings li .edit:focus {

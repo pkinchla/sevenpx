@@ -73,4 +73,5 @@ a:focus {
   cursor: pointer;
   line-height: 0;
   border-radius: var(--border-radius);
+  outline-color: var(--primary-color);
 }

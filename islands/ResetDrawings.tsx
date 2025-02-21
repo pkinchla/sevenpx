@@ -12,7 +12,7 @@ export default function ResetDrawings() {
   return (
     <>
       {IS_BROWSER && (
-        <button class="button mt-1" onClick={() => handleReset()}>
+        <button class="button" onClick={() => handleReset()}>
           Reset Drawings
         </button>
       )}
