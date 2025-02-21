@@ -18,6 +18,7 @@ function ListItem({ drawing, index }: { drawing: Drawing; index: string }) {
   useFocusTrap(listItemRef, active.value ? true : false);
 
   const buttonClasses = classNames({
+    button: true,
     edit: active.value !== index,
     ["disable-editing"]: active.value === index,
   });

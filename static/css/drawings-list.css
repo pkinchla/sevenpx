@@ -74,17 +74,9 @@
 }
 
 .drawings li button {
-  font-size: 1em;
-  background: var(--primary-color);
   position: absolute;
   top: 0.6em;
   right: 0.6em;
-  color: white;
-  padding: 1em 1.5em;
-  border: none;
-  box-shadow: none;
-  font-family: var(--font-sans-serif);
-  line-height: 0;
 }
 
 .drawings .draggable {
@@ -112,7 +104,7 @@
   height: 100%;
   transform: translate(-50%, -50%);
   background: none;
-  outline-color: var(--primary-color);
+  border-radius: unset;
 }
 
 .drawings li .edit:focus {
