@@ -15,7 +15,7 @@ export default function Drawings() {
       <article>
         <header className="drawings-header">
           <h1>Drawings</h1>
-          <a href="/" as="/" className="single-link d-block">
+          <a href="/" as="/" className="single-link">
             Home
           </a>
           <ResetDrawings />

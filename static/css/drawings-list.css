@@ -1,9 +1,15 @@
 .drawings-header {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
   width: max-content;
   padding: 1.5em;
   background: var(--background-color);
   margin-block-end: var(--border-width);
+}
+
+.drawings-header .single-link {
+  margin-bottom: 1em;
 }
 
 .drawings {

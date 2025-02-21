@@ -74,19 +74,3 @@ a:focus {
   line-height: 0;
   border-radius: var(--border-radius);
 }
-
-.d-inline-block {
-  display: inline-block;
-}
-
-.d-block {
-  display: block;
-}
-
-.mb-1 {
-  margin-block-end: 1em;
-}
-
-.mt-1 {
-  margin-block-start: 1em;
-}
