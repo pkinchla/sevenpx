@@ -23,6 +23,7 @@ export default function App({ Component, route }: PageProps) {
           type="font/woff2"
           crossorigin=""
         />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href={asset("/app.css")} />
       </head>
       <body>
