@@ -37,7 +37,7 @@ export default function App({ Component, route }: PageProps) {
             </a>
           )}
         </header>
-        <main id="main-content" className={`${route.split("/")[1]}-page`}>
+        <main id="main-content" class={`${route.split("/")[1]}-page`}>
           <Component />
         </main>
         <Vector />

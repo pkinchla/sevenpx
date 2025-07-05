@@ -6,7 +6,7 @@ const Logo = () => {
         d="M49.81,96.993s-6.104-17.387-1.297-18.726c14.653-4.082,66.255-7.805,66.255-7.805,15.521-2.498-62.916,63.537-34.534,90.204"
         fill="none"
         stroke="currentColor"
-        className="seven"
+        class="seven"
         stroke-width="7"
       />
       <path

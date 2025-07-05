@@ -20,7 +20,7 @@ export default function Home({ data }: PageProps) {
           content="A small application about drawing, collage and editing scalable vector graphic portraits in the browser. Side project of Paul Kinchla."
         />
       </Head>
-      <div className="content-block">
+      <div class="content-block">
         <h1 class="visually-hidden">Home Page</h1>
         {data.hasError
           ? (

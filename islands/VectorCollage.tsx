@@ -27,9 +27,9 @@ const Vector = () => {
   const vectors = generatePaths(drawings.value);
 
   return (
-    <div className="background">
+    <div class="background">
       <svg
-        className="background-animation"
+        class="background-animation"
         aria-hidden="true"
         viewBox="0 0 1000 1000"
         xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +38,7 @@ const Vector = () => {
           return (
             <path
               key={index}
-              className={item.fill}
+              class={item.fill}
               d={item.path}
               transform={item.transform}
             />

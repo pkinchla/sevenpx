@@ -13,9 +13,9 @@ export default function Drawings() {
         />
       </Head>
       <article>
-        <header className="drawings-header">
+        <header class="drawings-header">
           <h1>Drawings</h1>
-          <a href="/" as="/" className="single-link">
+          <a href="/" as="/" class="single-link">
             Home
           </a>
           <ResetDrawings />

@@ -6,7 +6,7 @@ export default function Error404() {
       <Head>
         <title>404 - Page not found</title>
       </Head>
-      <div className="content-block">
+      <div class="content-block">
         <h1>404 - Page not found</h1>
         <p>
           The page you were looking for doesn't exist.

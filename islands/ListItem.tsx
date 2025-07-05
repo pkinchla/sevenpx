@@ -8,14 +8,15 @@ import { useRef } from "preact/hooks";
 import { Drawing } from "../interfaces/drawing.model.ts";
 
 function ListItem({ drawing, index }: { drawing: Drawing; index: string }) {
+  const [blockScroll, allowScroll] = useControlScroll();
+  const listItemRef = useRef<HTMLLIElement>(null);
+  useFocusTrap(listItemRef, active.value ? true : false);
+
   if (!drawing) {
     return null;
   }
 
   const displayName = drawing?.children[0]?.children[0]?.value || drawing.title;
-  const [blockScroll, allowScroll] = useControlScroll();
-  const listItemRef = useRef<HTMLLIElement>(null);
-  useFocusTrap(listItemRef, active.value ? true : false);
 
   const buttonClasses = classNames({
     button: true,
@@ -33,7 +34,7 @@ function ListItem({ drawing, index }: { drawing: Drawing; index: string }) {
     <li
       tabIndex={-1}
       ref={listItemRef}
-      className={active.value === index ? "active" : ""}
+      class={active.value === index ? "active" : ""}
     >
       <Portrait
         viewBox={drawing.attributes.viewBox}
@@ -42,15 +43,16 @@ function ListItem({ drawing, index }: { drawing: Drawing; index: string }) {
         name={drawing.title}
         active={active.value === index}
       />
-      <span className="name">{displayName}</span>
+      <span class="name">{displayName}</span>
       {IS_BROWSER && (
         <button
-          className={buttonClasses}
+          type="button"
+          class={buttonClasses}
           onClick={() => handleclick(active.value, index)}
         >
           <span>
             {active.value === index ? "Finish Editing" : "Edit"}
-            <span className="visually-hidden">{`${displayName} portrait`}</span>
+            <span class="visually-hidden">{`${displayName} portrait`}</span>
           </span>
         </button>
       )}
