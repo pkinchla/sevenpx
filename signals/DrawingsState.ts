@@ -21,7 +21,7 @@ const drawings = setUpSignal();
 export function updateDrawings(
   title: string,
   path: string,
-  index: string,
+  index: number,
   transform: string,
 ): void {
   const copy = [...drawings.value];
@@ -32,7 +32,7 @@ export function updateDrawings(
   });
 
   // update appropriate path
-  target[0].children.map((item: Drawing, path_index: string) => {
+  target[0].children.map((item: Drawing, path_index: number) => {
     if (index === path_index) {
       item.attributes.d = path;
       item.attributes.transform = transform;
