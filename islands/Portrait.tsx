@@ -1,112 +1,100 @@
-import { useEffect, useRef } from "preact/hooks";
+import { useCallback, useEffect, useRef } from "preact/hooks";
 import { updateDrawings } from "../signals/DrawingsState.ts";
-import { Drawing } from "../interfaces/drawing.model.ts";
+import { Drawing, PathItem } from "../interfaces/drawing.model.ts";
+import { useDraggable } from "../hooks/useDraggable.ts";
 
-export default function Portrait(
-  { active, name, viewBox, title, paths }: Drawing,
-) {
-  const drawing = useRef<SVGElement>(null);
+export default function Portrait({
+  active,
+  name,
+  viewBox,
+  title,
+  paths,
+}: Drawing) {
+  const svgRef = useRef<SVGSVGElement>(null);
 
-  function makeDraggable() {
-    var svg = drawing?.current;
-    svg.addEventListener("mousedown", startDrag, { passive: true });
-    svg.addEventListener("mousemove", drag, { passive: true });
-    svg.addEventListener("mouseup", endDrag, { passive: true });
-    svg.addEventListener("touchstart", startDrag, { passive: true });
-    svg.addEventListener("touchmove", drag, { passive: true });
-    svg.addEventListener("touchend", endDrag, { passive: true });
-    svg.addEventListener("touchleave", endDrag, { passive: true });
-    svg.addEventListener("touchcancel", endDrag, { passive: true });
+  const handleDragEnd = useCallback(
+    (element: SVGElement, transform: string) => {
+      const d = element.getAttribute("d");
+      if (!d) return;
 
-    var selectedElement, dragX, dragY;
-    var reTranslate = /translate\s*\(([-+\d.\s,e]+)\)/gi;
+      const getPath = (item: PathItem) => item.attributes.d === d;
+      const index = paths.findIndex(getPath);
 
-    function startDrag(evt) {
-      if (evt.target.classList.contains("draggable")) {
-        if (evt.touches) {
-          evt = evt.touches[0];
-        }
-        var screenMatrix = svg.getScreenCTM();
-        selectedElement = evt.target;
-        dragX = evt.clientX / screenMatrix.a;
-        dragY = evt.clientY / screenMatrix.d;
+      updateDrawings(name, d, index, transform);
+    },
+    [name, paths],
+  );
 
-        // Parse existing translate transform
-        var transform = selectedElement.getAttributeNS(null, "transform");
-        var translate = reTranslate.exec(transform);
-        if (translate) {
-          var digits = translate[1].split(/\s*[,\s]+/);
-          dragX -= parseFloat(digits[0] || 0);
-          dragY -= parseFloat(digits[1] || 0);
-        } else {
-          // We need to add a translate transform if there isn't already one
-          translate = "translate(0, 0)";
-          if (transform) {
-            selectedElement.setAttributeNS(
-              null,
-              "transform",
-              translate + transform,
-            );
-          } else {
-            selectedElement.setAttributeNS(null, "transform", translate);
-          }
-        }
-      }
-    }
+  const {
+    handleDragStart,
+    handleDrag,
+    handleDragEnd: onDragEnd,
+  } = useDraggable({
+    onDragEnd: handleDragEnd,
+  });
 
-    function drag(evt) {
-      if (selectedElement) {
-        var screenMatrix = svg.getScreenCTM();
-        if (evt.touches) {
-          evt = evt.touches[0];
-        }
-        var x = evt.clientX / screenMatrix.a - dragX;
-        var y = evt.clientY / screenMatrix.d - dragY;
+  const onMouseDown = useCallback(
+    (evt: MouseEvent) => {
+      if (!svgRef.current) return;
+      handleDragStart(evt, svgRef.current);
+    },
+    [handleDragStart],
+  );
 
-        // Remove the existing translate and replace with the new one
-        var transform = selectedElement.getAttributeNS(null, "transform");
-        transform = transform.replace(
-          reTranslate,
-          "translate(" + x + " " + y + ")",
-        );
-        selectedElement.setAttributeNS(null, "transform", transform);
-      }
-    }
+  const onTouchStart = useCallback(
+    (evt: TouchEvent) => {
+      if (!svgRef.current) return;
+      handleDragStart(evt, svgRef.current);
+    },
+    [handleDragStart],
+  );
 
-    function endDrag(e) {
-      if (!e.target.getAttribute("d")) {
-        return;
-      }
+  const onMouseMove = useCallback(
+    (evt: MouseEvent) => {
+      if (!svgRef.current) return;
+      handleDrag(evt, svgRef.current);
+    },
+    [handleDrag],
+  );
 
-      const getPath = (element: SVGMPathElement) =>
-        element.attributes.d === e.target.getAttribute("d");
-      const getIndex = paths.findIndex(getPath);
-
-      updateDrawings(
-        name,
-        e.target.getAttribute("d"),
-        getIndex,
-        e.target.getAttribute("transform"),
-      );
-
-      selectedElement.blur();
-      selectedElement = false;
-    }
-  }
+  const onTouchMove = useCallback(
+    (evt: TouchEvent) => {
+      if (!svgRef.current) return;
+      handleDrag(evt, svgRef.current);
+    },
+    [handleDrag],
+  );
 
   useEffect(() => {
-    makeDraggable();
-  });
+    const handleDocumentMouseUp = () => onDragEnd();
+    const handleDocumentTouchEnd = () => onDragEnd();
+
+    document.addEventListener("mouseup", handleDocumentMouseUp);
+    document.addEventListener("touchend", handleDocumentTouchEnd);
+    document.addEventListener("touchcancel", handleDocumentTouchEnd);
+
+    return () => {
+      document.removeEventListener("mouseup", handleDocumentMouseUp);
+      document.removeEventListener("touchend", handleDocumentTouchEnd);
+      document.removeEventListener("touchcancel", handleDocumentTouchEnd);
+    };
+  }, [onDragEnd]);
 
   return (
     <svg
       role="application"
-      ref={drawing}
+      ref={svgRef}
       xmlns="http://www.w3.org/2000/svg"
       viewBox={viewBox}
+      onMouseDown={onMouseDown}
+      onMouseMove={onMouseMove}
+      onMouseUp={onDragEnd}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onDragEnd}
     >
       <title>{title}</title>
-      {paths.map((item: any, index: number) => {
+      {paths.map((item: PathItem, index: number) => {
         if (item.name !== "path") {
           return null;
         }

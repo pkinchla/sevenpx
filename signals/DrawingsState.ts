@@ -1,7 +1,7 @@
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import { Signal, signal } from "@preact/signals";
 import svgs from "../svgs.json" with { type: "json" };
-import { Drawing } from "../interfaces/drawing.model.ts";
+import { PathItem } from "../interfaces/drawing.model.ts";
 
 const setUpSignal = (): Signal => {
   if (!IS_BROWSER) {
@@ -21,7 +21,7 @@ const drawings = setUpSignal();
 export function updateDrawings(
   title: string,
   path: string,
-  index: string,
+  index: number,
   transform: string,
 ): void {
   const copy = [...drawings.value];
@@ -32,7 +32,7 @@ export function updateDrawings(
   });
 
   // update appropriate path
-  target[0].children.map((item: Drawing, path_index: string) => {
+  target[0].children.map((item: PathItem, path_index: number) => {
     if (index === path_index) {
       item.attributes.d = path;
       item.attributes.transform = transform;
