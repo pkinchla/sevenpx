@@ -31,7 +31,10 @@ function ListItem({ drawing, index }: { drawing: Drawing; index: string }) {
       listItemRef.current?.focus();
     };
 
-    if (document.startViewTransition) {
+    if (
+      document.startViewTransition &&
+      !globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
       const parent = listItemRef.current?.parentElement;
       const siblings = parent
         ? Array.from(parent.querySelectorAll<HTMLLIElement>("li")).filter(
