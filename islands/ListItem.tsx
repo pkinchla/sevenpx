@@ -25,9 +25,37 @@ function ListItem({ drawing, index }: { drawing: Drawing; index: string }) {
   });
 
   const handleclick = (current: string | null, index: string) => {
-    active.value = index === current ? null : index;
-    active.value ? blockScroll() : allowScroll();
-    listItemRef.current?.focus();
+    const updateState = () => {
+      active.value = index === current ? null : index;
+      active.value ? blockScroll() : allowScroll();
+      listItemRef.current?.focus();
+    };
+
+    if (document.startViewTransition) {
+      const parent = listItemRef.current?.parentElement;
+      const siblings = parent
+        ? Array.from(parent.querySelectorAll<HTMLLIElement>("li")).filter(
+          (li) => li !== listItemRef.current,
+        )
+        : [];
+
+      const savedNames = siblings.map((li) =>
+        li.style.getPropertyValue("view-transition-name")
+      );
+      siblings.forEach((li) =>
+        li.style.setProperty("view-transition-name", "none")
+      );
+
+      const transition = document.startViewTransition(updateState);
+
+      transition.finished.finally(() => {
+        siblings.forEach((li, i) =>
+          li.style.setProperty("view-transition-name", savedNames[i])
+        );
+      });
+    } else {
+      updateState();
+    }
   };
 
   return (
@@ -35,6 +63,7 @@ function ListItem({ drawing, index }: { drawing: Drawing; index: string }) {
       tabIndex={-1}
       ref={listItemRef}
       class={active.value === index ? "active" : ""}
+      style={{ viewTransitionName: `list-item-${index}` }}
     >
       <Portrait
         viewBox={drawing.attributes.viewBox}

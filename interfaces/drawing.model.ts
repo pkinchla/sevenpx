@@ -2,10 +2,7 @@ import { INode } from "npm:svgson";
 
 export interface PathItem {
   name: string;
-  attributes: {
-    d: string;
-    transform?: string;
-  };
+  attributes: Record<string, string>;
 }
 
 export interface Drawing extends INode {

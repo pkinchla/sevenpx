@@ -9,7 +9,7 @@ export default function Portrait({
   viewBox,
   title,
   paths,
-}: Drawing) {
+}: Pick<Drawing, "active" | "name" | "viewBox" | "title" | "paths">) {
   const svgRef = useRef<SVGSVGElement>(null);
 
   const handleDragEnd = useCallback(

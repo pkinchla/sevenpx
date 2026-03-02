@@ -19,20 +19,8 @@
   padding: 0 2.25%;
 }
 
-@keyframes zoomIn {
-  from {
-    opacity: 0;
-    transform: scale3d(0.3, 0.3, 0.3);
-  }
-
-  50% {
-    opacity: 1;
-  }
-}
-
 .drawings li {
   position: relative;
-  transition: all 0.3s ease-in-out;
   height: 100%;
   width: 100%;
   background: white;
@@ -48,8 +36,17 @@
   width: 100vw;
   height: 100dvh;
   z-index: 10;
-  transform: translate3d(0);
-  animation: zoomIn 0.5s;
+}
+
+::view-transition-group(list-item-*) {
+  animation-duration: 0.35s;
+  animation-timing-function: ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(list-item-*) {
+    animation-duration: 0.01ms;
+  }
 }
 
 .drawings li.active svg {
@@ -69,6 +66,7 @@
   width: 100%;
   font-family: var(--font-sans-serif);
 }
+
 .drawings .draggable {
   cursor: move;
 }
