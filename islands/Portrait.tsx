@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef } from "preact/hooks";
 import { updateDrawings } from "../signals/DrawingsState.ts";
 import { Drawing, PathItem } from "../interfaces/drawing.model.ts";
-import { useDraggable } from "../hooks/useDraggable.ts";
+import { useDraggable } from "../utils/hooks/useDraggable.ts";
 
 export default function Portrait({
   active,

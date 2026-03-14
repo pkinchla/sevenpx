@@ -4,27 +4,21 @@ import active from "../signals/ActiveIndex.ts";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import useControlScroll from "../utils/hooks/useControlScroll.ts";
 import useFocusTrap from "../utils/hooks/useFocusTrap.ts";
+import useEscapeKey from "../utils/hooks/useEscapeKey.ts";
 import { useRef } from "preact/hooks";
 import { Drawing } from "../interfaces/drawing.model.ts";
 
 function ListItem({ drawing, index }: { drawing: Drawing; index: string }) {
   const [blockScroll, allowScroll] = useControlScroll();
   const listItemRef = useRef<HTMLLIElement>(null);
+  // close editing when escape key is clicked
+  useEscapeKey(() =>
+    active.value === index ? handleEditDrawing(active.value, index) : null
+  );
+  // focus trap the current drawing being edited
   useFocusTrap(listItemRef, active.value ? true : false);
 
-  if (!drawing) {
-    return null;
-  }
-
-  const displayName = drawing?.children[0]?.children[0]?.value || drawing.title;
-
-  const buttonClasses = classNames({
-    button: true,
-    edit: active.value !== index,
-    ["disable-editing"]: active.value === index,
-  });
-
-  const handleclick = (current: string | null, index: string) => {
+  function handleEditDrawing(current: string | null, index: string) {
     const updateState = () => {
       active.value = index === current ? null : index;
       active.value ? blockScroll() : allowScroll();
@@ -59,7 +53,19 @@ function ListItem({ drawing, index }: { drawing: Drawing; index: string }) {
     } else {
       updateState();
     }
-  };
+  }
+
+  if (!drawing) {
+    return null;
+  }
+
+  const displayName = drawing?.children[0]?.children[0]?.value || drawing.title;
+
+  const buttonClasses = classNames({
+    button: true,
+    edit: active.value !== index,
+    ["disable-editing"]: active.value === index,
+  });
 
   return (
     <li
@@ -80,7 +86,7 @@ function ListItem({ drawing, index }: { drawing: Drawing; index: string }) {
         <button
           type="button"
           class={buttonClasses}
-          onClick={() => handleclick(active.value, index)}
+          onClick={() => handleEditDrawing(active.value, index)}
         >
           <span>
             {active.value === index ? "Finish Editing" : "Edit"}

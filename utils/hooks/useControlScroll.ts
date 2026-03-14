@@ -1,18 +1,18 @@
 import { useRef } from "preact/hooks";
 
-const safeDocument = typeof document !== "undefined" ? document : {};
+const safeDocument = typeof document !== "undefined" ? document : null;
 
 /**
  * Usage:
  * const [blockScroll, allowScroll] = useScrollBlock();
  */
 function useControlScroll() {
-  const scrollBlocked = useRef();
-  const html = safeDocument.documentElement;
-  const { body } = safeDocument;
+  const scrollBlocked = useRef<boolean>(false);
+  const html = safeDocument?.documentElement;
+  const body = safeDocument?.body;
 
   const blockScroll = () => {
-    if (!body || !body.style || scrollBlocked.current) return;
+    if (!body || !body.style || !html || scrollBlocked.current) return;
 
     const scrollBarWidth = globalThis.innerWidth - html.clientWidth;
     const bodyPaddingRight = parseInt(
@@ -35,7 +35,7 @@ function useControlScroll() {
   };
 
   const allowScroll = () => {
-    if (!body || !body.style || !scrollBlocked.current) return;
+    if (!body || !body.style || !html || !scrollBlocked.current) return;
 
     html.style.position = "";
     html.style.overflow = "";
