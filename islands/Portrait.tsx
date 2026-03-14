@@ -29,6 +29,7 @@ export default function Portrait({
     handleDragStart,
     handleDrag,
     handleDragEnd: onDragEnd,
+    handleKeyDown,
   } = useDraggable({
     onDragEnd: handleDragEnd,
   });
@@ -92,6 +93,7 @@ export default function Portrait({
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onDragEnd}
+      onKeyDown={handleKeyDown}
     >
       <title>{title}</title>
       {paths.map((item: PathItem, index: number) => {

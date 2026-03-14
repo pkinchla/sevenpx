@@ -107,6 +107,53 @@ export function useDraggable(options: UseDraggableOptions = {}) {
     dragState.current.selectedElement = null;
   }, [options.onDragEnd]);
 
+  const handleKeyDown = useCallback(
+    (evt: KeyboardEvent) => {
+      const target = evt.target as SVGElement;
+      if (!target.classList.contains("draggable")) return;
+
+      const step = evt.shiftKey ? 10 : 1;
+      const deltas: Partial<Record<string, [number, number]>> = {
+        ArrowLeft: [-step, 0],
+        ArrowRight: [step, 0],
+        ArrowUp: [0, -step],
+        ArrowDown: [0, step],
+      };
+
+      const delta = deltas[evt.key];
+      if (!delta) return;
+
+      evt.preventDefault();
+
+      const transform = target.getAttributeNS(null, "transform") || "";
+      const match = parseTranslate(transform);
+
+      let x = 0;
+      let y = 0;
+      if (match) {
+        const digits = match[1].split(/\s*[,\s]+/);
+        x = parseFloat(digits[0] || "0");
+        y = parseFloat(digits[1] || "0");
+      }
+
+      x += delta[0];
+      y += delta[1];
+
+      TRANSLATE_REGEX.lastIndex = 0;
+      const newTransform = match
+        ? transform.replace(TRANSLATE_REGEX, `translate(${x} ${y})`)
+        : `translate(${x} ${y})${transform ? ` ${transform}` : ""}`;
+
+      target.setAttributeNS(null, "transform", newTransform);
+
+      const d = target.getAttribute("d");
+      if (d) {
+        options.onDragEnd?.(target, newTransform);
+      }
+    },
+    [parseTranslate, options.onDragEnd],
+  );
+
   const isDragging = useCallback(() => {
     return dragState.current.selectedElement !== null;
   }, []);
@@ -115,6 +162,7 @@ export function useDraggable(options: UseDraggableOptions = {}) {
     handleDragStart,
     handleDrag,
     handleDragEnd,
+    handleKeyDown,
     isDragging,
   };
 }
