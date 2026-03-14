@@ -1,6 +1,9 @@
-import { Head } from "$fresh/runtime.ts";
-import List from "../islands/List.tsx";
-import ResetDrawings from "../islands/ResetDrawings.tsx";
+import { Head } from "fresh/runtime";
+import { type RouteConfig } from "fresh";
+import List from "../../islands/List.tsx";
+import ResetDrawings from "../../islands/ResetDrawings.tsx";
+
+export const config: RouteConfig = { routeOverride: "/drawings/" };
 
 export default function Drawings() {
   return (
@@ -15,7 +18,7 @@ export default function Drawings() {
       <article>
         <header class="drawings-header">
           <h1>Drawings</h1>
-          <a href="/" as="/" class="single-link">
+          <a href="/" class="single-link">
             Home
           </a>
           <ResetDrawings />

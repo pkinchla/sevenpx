@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import Portrait from "./Portrait.tsx";
 import active from "../signals/ActiveIndex.ts";
-import { IS_BROWSER } from "$fresh/runtime.ts";
+import { IS_BROWSER } from "fresh/runtime";
 import useControlScroll from "../utils/hooks/useControlScroll.ts";
 import useFocusTrap from "../utils/hooks/useFocusTrap.ts";
 import useEscapeKey from "../utils/hooks/useEscapeKey.ts";

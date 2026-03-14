@@ -1,4 +1,4 @@
-import { INode } from "npm:svgson";
+import { INode } from "npm:svgson@5.3.1";
 
 export interface PathItem {
   name: string;

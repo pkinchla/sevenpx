@@ -1,16 +1,17 @@
-import { Head } from "$fresh/runtime.ts";
-import { Handlers, PageProps } from "$fresh/server.ts";
+import { Head } from "fresh/runtime";
+import { page, type PageProps } from "fresh";
 import { getContent } from "../utils/server.ts";
 
-export const handler: Handlers = {
-  async GET(_, ctx) {
-    const content = await getContent();
+type HomeData = Awaited<ReturnType<typeof getContent>>;
 
-    return ctx.render(content);
+export const handler = {
+  async GET() {
+    const content = await getContent();
+    return page<HomeData>(content);
   },
 };
 
-export default function Home({ data }: PageProps) {
+export default function Home({ data }: PageProps<HomeData>) {
   return (
     <>
       <Head>
@@ -29,7 +30,8 @@ export default function Home({ data }: PageProps) {
               <p>{data.error}</p>
             </>
           )
-          : <div dangerouslySetInnerHTML={{ __html: data.copy }} />}
+          // deno-lint-ignore react-no-danger
+          : <div dangerouslySetInnerHTML={{ __html: data.copy ?? "" }} />}
         <a href="/drawings/" class="single-link">View Drawings →</a>
       </div>
     </>

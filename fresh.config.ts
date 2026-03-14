@@ -1,3 +1,3 @@
-import { defineConfig } from "$fresh/server.ts";
+import { type FreshConfig } from "fresh";
 
-export default defineConfig({ port: 3000, router: { trailingSlash: true } });
+export default {} satisfies FreshConfig;

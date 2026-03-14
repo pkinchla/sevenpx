@@ -1,6 +1,6 @@
 import drawings from "../signals/DrawingsState.ts";
 import svgs from "../svgs.json" with { type: "json" };
-import { IS_BROWSER } from "$fresh/runtime.ts";
+import { IS_BROWSER } from "fresh/runtime";
 
 export default function ResetDrawings() {
   const handleReset = () => {

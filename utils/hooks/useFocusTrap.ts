@@ -54,6 +54,7 @@ const useFocusTrap = <T extends HTMLElement>(
         const elem = focusableElems[initialFocus] as HTMLElement;
         elem.focus();
       } else if (initialFocus === "none") {
+        return;
       } else {
         throw `initialFocus must be either the values 'first', 'none', or a number. You specified initialFocus as ${typeof initialFocus}`;
       }

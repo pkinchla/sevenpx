@@ -1,4 +1,4 @@
-import { IS_BROWSER } from "$fresh/runtime.ts";
+import { IS_BROWSER } from "fresh/runtime";
 import { Signal, signal } from "@preact/signals";
 import svgs from "../svgs.json" with { type: "json" };
 import { PathItem } from "../interfaces/drawing.model.ts";

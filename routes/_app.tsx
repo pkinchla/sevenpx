@@ -1,16 +1,11 @@
-import { Handlers, type PageProps } from "$fresh/server.ts";
-import { asset } from "$fresh/runtime.ts";
+import { type PageProps } from "fresh";
+import { asset } from "fresh/runtime";
 import Logo from "../components/Logo.tsx";
 import Vector from "../islands/VectorCollage.tsx";
 
-export const handler: Handlers = {
-  GET(_, ctx) {
-    const route = ctx.route;
+export default function App({ Component, url }: PageProps) {
+  const route = url.pathname;
 
-    return ctx.render(route);
-  },
-};
-export default function App({ Component, route }: PageProps) {
   return (
     <html lang="en-US">
       <head>
@@ -21,7 +16,7 @@ export default function App({ Component, route }: PageProps) {
           href="/inter-variable.woff2"
           as="font"
           type="font/woff2"
-          crossorigin=""
+          crossOrigin="anonymous"
         />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href={asset("/app.css")} />
