@@ -9,7 +9,7 @@ export default function Drawings() {
   return (
     <>
       <Head>
-        <title>Seven Pixels | Drawings</title>
+        <title key="page-title">Seven Pixels | Drawings</title>
         <meta
           name="description"
           content="Drawings that can be edited in the browser via drag and drop scalable vector graphics. Each drawing is a portrait based on seven pixel stroke"

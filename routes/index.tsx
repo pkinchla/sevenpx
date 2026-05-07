@@ -15,7 +15,7 @@ export default function Home({ data }: PageProps<HomeData>) {
   return (
     <>
       <Head>
-        <title>Seven Pixels | Home</title>
+        <title key="page-title">Seven Pixels | Home</title>
         <meta
           name="description"
           content="A small application about drawing, collage and editing scalable vector graphic portraits in the browser. Side project of Paul Kinchla."
