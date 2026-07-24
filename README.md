@@ -11,7 +11,7 @@ variables for managing content through contentful.
 ```bash
 SPACE_ID=contentful-space-id
 ACCESS_TOKEN=contentful-access-token
-CONTENT_ENTRY=contentful-content-entry
+ENTRY=contentful-content-entry
 ```
 
 2. Then create a folder of SVGS in `./svg/` (still the root of the project).

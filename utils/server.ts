@@ -7,7 +7,7 @@ interface ContentFields {
 
 const SPACE_ID = Deno.env.get("SPACE_ID") as string;
 const ACCESS_TOKEN = Deno.env.get("ACCESS_TOKEN") as string;
-const CONTENT_ENTRY = Deno.env.get("CONTENT_ENTRY") as string;
+const ENTRY = Deno.env.get("ENTRY") as string;
 
 // run server side
 export async function getContent() {
@@ -17,7 +17,7 @@ export async function getContent() {
   });
 
   return await client
-    .getEntry<ContentFields>(CONTENT_ENTRY)
+    .getEntry<ContentFields>(ENTRY)
     .then((content) => {
       return {
         hasError: false,
