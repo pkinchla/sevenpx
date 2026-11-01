@@ -15,3 +15,8 @@ node_modules/
 
 # System files
 .DS_Store
+
+# Cloudflare
+.wrangler/
+.dev.vars*
+dist/

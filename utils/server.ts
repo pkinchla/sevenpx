@@ -1,54 +1,52 @@
-import { createClient } from "contentful";
+import process from "node:process";
 import { marked } from "marked";
 
 interface ContentFields {
   copy: string;
 }
 
-const SPACE_ID = Deno.env.get("SPACE_ID") as string;
-const ACCESS_TOKEN = Deno.env.get("ACCESS_TOKEN") as string;
-const ENTRY = Deno.env.get("CONTENT_ENTRY") as string;
+interface ContentfulError {
+  sys: { id: string };
+  message: string;
+}
 
 // run server side
 export async function getContent() {
-  const client = createClient({
-    space: SPACE_ID,
-    accessToken: ACCESS_TOKEN,
-  });
+  const SPACE_ID = process.env.SPACE_ID;
+  const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
+  const ENTRY = process.env.CONTENT_ENTRY;
 
-  return await client
-    .getEntry<ContentFields>(ENTRY)
-    .then((content) => {
-      return {
-        hasError: false,
-        status: 200,
-        copy: marked.parse(content.fields.copy),
-        error: null,
-      };
-    })
-    .catch((error: Error) => {
-      switch (error.name) {
-        case "AccessTokenInvalid":
-        case "AccessDenied":
-        case "BadRequest":
-        case "NotFound":
-        case "VersionMismatch": {
-          const errorObject = JSON.parse(error.message);
-          return {
-            hasError: true,
-            status: errorObject.status,
-            error: errorObject.message,
-            copy: null,
-          };
-        }
-        default: {
-          return {
-            hasError: true,
-            status: 404,
-            error: error.message,
-            copy: null,
-          };
-        }
-      }
+  const url =
+    `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/master/entries/${ENTRY}`;
+
+  try {
+    const response = await fetch(url, {
+      headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
     });
+
+    if (!response.ok) {
+      const errorObject: ContentfulError = await response.json();
+      return {
+        hasError: true,
+        status: response.status,
+        error: errorObject.message,
+        copy: null,
+      };
+    }
+
+    const content: { fields: ContentFields } = await response.json();
+    return {
+      hasError: false,
+      status: 200,
+      copy: marked.parse(content.fields.copy),
+      error: null,
+    };
+  } catch (error) {
+    return {
+      hasError: true,
+      status: 404,
+      error: (error as Error).message,
+      copy: null,
+    };
+  }
 }

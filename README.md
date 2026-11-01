@@ -11,7 +11,7 @@ variables for managing content through contentful.
 ```bash
 SPACE_ID=contentful-space-id
 ACCESS_TOKEN=contentful-access-token
-ENTRY=contentful-content-entry
+CONTENT_ENTRY=contentful-content-entry
 ```
 
 2. Then create a folder of SVGS in `./svg/` (still the root of the project).
@@ -23,6 +23,22 @@ will fallback to the filename if no title is provided._
 
 You can now run the app in development using `deno task start`. For building the
 app for production use `deno task build`.
+
+## Deploying
+
+The app is deployed to Cloudflare Workers.
+
+1. Log in to Cloudflare: `deno run -A npm:wrangler login`
+2. Add the Contentful variables as Worker secrets (one-time):
+
+```bash
+deno run -A npm:wrangler secret put SPACE_ID
+deno run -A npm:wrangler secret put ACCESS_TOKEN
+deno run -A npm:wrangler secret put CONTENT_ENTRY
+```
+
+3. Run `deno task preview` to try the production build in the local Workers
+   runtime, then `deno task deploy` to build and deploy.
 
 ## My instance
 

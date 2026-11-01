@@ -1,29 +1,54 @@
 {
+  "nodeModulesDir": "manual",
   "tasks": {
     "check": "deno fmt --check && deno lint && deno check",
-    "start": "deno run -A --watch=static/,routes/ dev.ts & deno task process:css",
-    "build": "deno run -A dev.ts build",
-    "preview": "deno serve -A _fresh/server.js",
+    "start": "deno task process:css & deno run -A --env-file=.env npm:vite",
+    "build": "deno run -A process.css.ts && vite build",
+    "preview": "deno task build && vite preview",
+    "deploy": "deno task build && wrangler deploy",
     "update": "deno run -A -r jsr:@fresh/update .",
     "process:drawings": "deno run -A process.svg.ts",
     "process:css": "deno run -A --watch=static/css/ process.css.ts"
   },
-  "lint": { "rules": { "tags": ["fresh", "recommended"] } },
-  "exclude": ["**/_fresh/*", "**/svgs.json", "**/static/*"],
+  "lint": {
+    "rules": {
+      "tags": [
+        "fresh",
+        "recommended"
+      ]
+    }
+  },
+  "exclude": [
+    "**/_fresh/*",
+    "**/svgs.json",
+    "**/static/*",
+    ".wrangler/",
+    "dist/"
+  ],
   "imports": {
+    "@cloudflare/vite-plugin": "npm:@cloudflare/vite-plugin@^1.66.0",
+    "@fresh/plugin-vite": "jsr:@fresh/plugin-vite@^1.1.2",
+    "@preact/signals": "npm:@preact/signals@^2.10.0",
+    "@types/babel__core": "npm:@types/babel__core@^7.20.5",
+    "@types/node": "npm:@types/node@^26.6.6",
     "autoprefixer": "npm:autoprefixer@^10.5.4",
     "classnames": "npm:classnames@^2.5.1",
-    "contentful": "https://esm.sh/contentful@9.3.5",
-    "marked": "https://esm.sh/marked@4.3.0",
+    "fresh": "jsr:@fresh/core@^2.3.3",
+    "marked": "npm:marked@4.3.0",
     "postcss": "npm:postcss@^8.5.22",
     "postcss-csso": "npm:postcss-csso@^6.0.1",
     "postcss-import": "npm:postcss-import@^16.1.1",
     "preact": "npm:preact@^10.29.7",
     "preact/hooks": "npm:preact@^10.29.7/hooks",
     "preact/jsx-runtime": "npm:preact@^10.29.7/jsx-runtime",
-    "@preact/signals": "npm:@preact/signals@^2.10.0",
-    "$std/": "https://deno.land/std@0.216.0/",
-    "fresh": "jsr:@fresh/core@^2.3.3"
+    "vite": "npm:vite@^7.3.7",
+    "wrangler": "npm:wrangler@^4.156.0"
   },
-  "compilerOptions": { "jsx": "react-jsx", "jsxImportSource": "preact" }
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
+    "types": [
+      "vite/client"
+    ]
+  }
 }

@@ -1,0 +1,43 @@
+.dialog {
+  border: var(--border-width) solid black;
+  border-radius: var(--border-radius);
+  padding: 2em;
+  max-width: 28rem;
+  width: calc(100% - 2rem);
+  background: var(--background-color);
+  color: var(--body-color);
+  font-family: var(--font-sans-serif);
+}
+
+.dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+}
+
+.dialog-message {
+  margin: 0 0 1.5em;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+.dialog-actions {
+  display: flex;
+  gap: 0.75em;
+  justify-content: flex-end;
+}
+
+.dialog-confirm {
+  background: var(--primary-color);
+  color: white;
+}
+
+.dialog-confirm--dangerous {
+  background: #c0392b;
+  color: white;
+}
+
+.dialog-cancel {
+  background: transparent;
+  color: var(--body-color);
+  border: var(--border-width) solid black;
+}
