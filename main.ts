@@ -10,7 +10,12 @@ export const app = new App(config)
       return Response.redirect(url, 301);
     }
     return ctx.next();
-  })
-  .use(staticFiles())
-  .use(trailingSlashes("always"))
-  .fsRoutes();
+  });
+
+// On Cloudflare Workers static files are served by the assets layer before the
+// Worker runs, and the Worker can't read them from disk.
+if (navigator.userAgent !== "Cloudflare-Workers") {
+  app.use(staticFiles());
+}
+
+app.use(trailingSlashes("always")).fsRoutes();
