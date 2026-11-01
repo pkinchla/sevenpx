@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "sevenpx",
+  "account_id": "e8505a3ff8140be90bf4322462bd55b3",
   "main": "./server.js",
   "compatibility_date": "2026-10-01",
   "compatibility_flags": ["nodejs_compat"],
